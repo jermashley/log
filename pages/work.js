@@ -1,11 +1,11 @@
-const Home = () => {
+const Work = () => {
   return (
     <>
       <h1 className="text-center text-2xl text-coolGray-700 dark:text-coolGray-400 font-light">
-        Howdy
+        Work
       </h1>
     </>
   )
 }
 
-export default Home
+export default Work

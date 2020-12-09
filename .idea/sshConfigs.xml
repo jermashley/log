@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="web1.prologuetechnology.com" id="2379f01a-0786-46a9-9d60-c823f7e6fe97" keyPath="$USER_HOME$/.ssh/id_rsa" port="22" customName="Prologue Web 1" nameFormat="CUSTOM" username="pipeline">
+        <option name="customName" value="Prologue Web 1" />
+      </sshConfig>
+      <sshConfig host="web2.prologuetechnology.com" id="3ed5f7f3-ebd0-49ad-87a0-1ed7b6797d9a" keyPath="$USER_HOME$/.ssh/id_rsa" port="22" customName="Prologue Web 2" nameFormat="CUSTOM" username="pipeline">
+        <option name="customName" value="Prologue Web 2" />
+      </sshConfig>
+      <sshConfig host="fwgs.dev" id="db2002e7-4977-49f6-8752-f4804747a5b8" keyPath="$USER_HOME$/.ssh/ProTechOhio.pem" port="22" customName="FWGS Dev" nameFormat="CUSTOM" username="root">
+        <option name="customName" value="FWGS Dev" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

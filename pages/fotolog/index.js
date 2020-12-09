@@ -1,11 +1,11 @@
-const Home = () => {
+const Photo = () => {
   return (
     <>
       <h1 className="text-center text-2xl text-coolGray-700 dark:text-coolGray-400 font-light">
-        Howdy
+        Photography
       </h1>
     </>
   )
 }
 
-export default Home
+export default Photo
