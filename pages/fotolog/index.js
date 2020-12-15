@@ -2,14 +2,14 @@ import axios from 'axios'
 import Link from 'next/link'
 import CopyIcon from '../../components/Icons/CopyIcon'
 
-const Photo = ({ fotoLogs }) => {
+const FotoLogs = ({ fotoLogs }) => {
   return (
     <section>
       {fotoLogs.map((fotoLog) => {
         const hasMultiplePhotos = fotoLog.photos.length >= 2
 
         return (
-          <Link href="/" key={fotoLog.id}>
+          <Link href={`fotolog/${fotoLog.id}`} key={fotoLog.id}>
             <a>
               {hasMultiplePhotos && (
                 <span>
@@ -109,4 +109,4 @@ export const getStaticProps = async () => {
   }
 }
 
-export default Photo
+export default FotoLogs

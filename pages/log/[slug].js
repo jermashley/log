@@ -51,8 +51,6 @@ export const getStaticPaths = async () => {
       return res.data.data.logs
     })
 
-  console.log(`logPaths`, logPaths)
-
   const paths = logPaths.map((logPath) => ({
     params: { slug: logPath.slug },
   }))
@@ -61,7 +59,6 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  console.log(params)
   const log = await axios
     .post(
       `https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master`,
