@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown'
 import DateString from '../../components/DateString'
 
 const Log = ({ log }) => {
-  console.log(log)
   return (
     <section>
       <div className="w-full h-64 mb-3">
@@ -24,9 +23,12 @@ const Log = ({ log }) => {
         {log.title}
       </h1>
 
-      <article className="prose dark:prose-dark">
-        {log.markdown.map((content) => (
-          <ReactMarkdown key={content.substr(0, 10)} children={content} />
+      <article className="prose dark:prose-dark max-w-none">
+        {log.markdown.map((markdownBlock) => (
+          <ReactMarkdown
+            key={markdownBlock.substr(0, 10)}
+            children={markdownBlock}
+          />
         ))}
       </article>
     </section>
@@ -72,7 +74,20 @@ export const getStaticProps = async ({ params }) => {
           publishedAt
           hero {
             id
-            url
+            url(transformation: {
+              image: {
+                resize: {
+                  width: 672,
+                  height: 480,
+                  fit: clip
+                }
+              }
+              document: {
+                output: {
+                  format: webp
+                }
+              }
+            })
           }
           markdown
         }

@@ -19,18 +19,31 @@ export const getStaticProps = async () => {
       `https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master`,
       {
         query: `query {
-        logs {
-          id
-          title
-          slug
-          publishedAt
-          hero {
+          logs {
             id
-            url
+            title
+            slug
+            publishedAt
+            hero {
+              id
+              url(transformation: {
+                image: {
+                  resize: {
+                    width: 200,
+                    height: 160,
+                    fit: clip
+                  }
+                }
+                document: {
+                  output: {
+                    format: webp
+                  }
+                }
+              })
+            }
+            summary
           }
-          summary
-        }
-      }`,
+        }`,
       },
     )
     .then((res) => {

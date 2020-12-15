@@ -11,8 +11,9 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
     <div
       style={{
         backdropFilter: `blur(10px)`,
+        WebkitBackdropFilter: `blur(10px)`,
       }}
-      className="bg-white dark:bg-coolGray-900 bg-opacity-75 fixed w-full mb-16 z-50 px-4 md:px-0"
+      className="bg-white dark:bg-coolGray-900 bg-opacity-75 fixed w-full z-50 px-4 md:px-0"
     >
       <nav className="flex flex-row justify-between items-center py-4 max-w-2xl mx-auto">
         <div

@@ -4,9 +4,9 @@ const typography = require(`@tailwindcss/typography`)
 module.exports = {
   future: {
     // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,s
+    // purgeLayersByDefault: true
   },
-  purge: [],
+  purge: false,
   darkMode: `media`,
   theme: {
     fontFamily: {
