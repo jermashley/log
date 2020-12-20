@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import FeatherIcon from '../Icons/FeatherIcon'
-import PenToolIcon from '../Icons/PenToolIcon'
-import CameraIcon from '../Icons/CameraIcon'
-import ProfileIcon from '../Icons/ProfileIcon'
+import FeatherIcon from '@components/Icons/FeatherIcon'
+import PenToolIcon from '@components/Icons/PenToolIcon'
+import CameraIcon from '@components/Icons/CameraIcon'
+import ProfileIcon from '@components/Icons/ProfileIcon'
 import {
   BLOG_BASE_PATH,
   WORK_BASE_PATH,
   PHOTOGRAPHY_BASE_PATH,
   ABOUT_BASE_PATH,
-} from '../../lib/constants/navigation'
+} from '@lib/constants/navigation'
 
 const NavbarIcons = () => {
   const { pathname } = useRouter()

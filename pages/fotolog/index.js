@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Link from 'next/link'
-import CopyIcon from '../../components/Icons/CopyIcon'
+import CopyIcon from '@components/Icons/CopyIcon'
 
 const FotoLogs = ({ fotoLogs }) => {
   return (
@@ -16,7 +16,9 @@ const FotoLogs = ({ fotoLogs }) => {
                   <CopyIcon />
                 </span>
               )}
-              <img src={fotoLog.photos[0].url} alt="" />
+              <div>
+                <img src={fotoLog.photos[0].url} alt="" />
+              </div>
             </a>
           </Link>
         )
@@ -38,11 +40,21 @@ const FotoLogs = ({ fotoLogs }) => {
         section > a::before {
           content: '';
           display: block;
+          width: 100%;
+          height: 100%;
           padding-bottom: 100%;
           grid-area: 1 / 1 / 2 / 2;
         }
 
-        section > a > img {
+        section > a div {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+
+        section > a img {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -51,7 +63,7 @@ const FotoLogs = ({ fotoLogs }) => {
           transform: scale(1.075);
         }
 
-        section > a:hover > img {
+        section > a:hover img {
           transition: 250ms ease-in-out;
           transform: scale(1);
         }

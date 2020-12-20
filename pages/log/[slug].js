@@ -1,17 +1,13 @@
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
-import DateString from '../../components/DateString'
+import DateString from '@components/DateString'
 
 const Log = ({ log }) => {
   return (
     <section>
-      <div className="w-full h-64 mb-3">
-        <img
-          src={log.hero.url}
-          alt=""
-          className="w-full h-full object-cover object-center"
-        />
-      </div>
+      <h1 className="text-4xl text-coolGray-700 dark:text-coolGray-400 font-normal mb-3">
+        {log.title}
+      </h1>
 
       <DateString
         className="block font-semibold text-coolGray-500 text-xxs uppercase mb-12"
@@ -19,15 +15,19 @@ const Log = ({ log }) => {
         dateFormat="MMMM dd, yyyy"
       />
 
-      <h1 className="text-4xl text-coolGray-700 dark:text-coolGray-400 font-normal mb-4">
-        {log.title}
-      </h1>
+      <div className="w-full h-64 mb-12">
+        <img
+          src={log.hero.url}
+          alt=""
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
 
       <article className="prose dark:prose-dark max-w-none">
         {log.markdown.map((markdownBlock) => (
           <ReactMarkdown
             key={markdownBlock.substr(0, 10)}
-            children={markdownBlock}
+            source={markdownBlock}
           />
         ))}
       </article>

@@ -8,7 +8,7 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
   const isHomePage = router.pathname === `/`
 
   return (
-    <div
+    <header
       style={{
         backdropFilter: `blur(10px)`,
         WebkitBackdropFilter: `blur(10px)`,
@@ -30,7 +30,7 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
 
         <NavbarIcons />
       </nav>
-    </div>
+    </header>
   )
 }
 

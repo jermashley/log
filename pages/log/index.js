@@ -1,15 +1,13 @@
 import axios from 'axios'
-import LogCard from '../../components/Log/LogCard'
+import LogCard from '@components/LogCard'
 
 const Logs = ({ logs }) => {
   return (
-    <>
-      <section className="w-full grid grid-cols-1 grid-flow-row gap-6">
-        {logs.map((log) => (
-          <LogCard log={log} key={log.slug} />
-        ))}
-      </section>
-    </>
+    <section className="w-full grid grid-cols-1 grid-flow-row gap-6">
+      {logs.map((log) => (
+        <LogCard log={log} key={log.slug} />
+      ))}
+    </section>
   )
 }
 

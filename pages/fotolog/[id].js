@@ -74,7 +74,6 @@ export const getStaticProps = async ({ params }) => {
       },
     )
     .then((res) => {
-      console.log(res.data.data.fotoLog)
       return res.data.data.fotoLog
     })
 
