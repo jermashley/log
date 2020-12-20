@@ -33,6 +33,6 @@ module.exports = {
         },
       },
     ],
-    // purgecss,
+    process.env.NODE_ENV === `production` ? purgecss : undefined,
   ],
 }

@@ -6,7 +6,12 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true
   },
-  purge: false,
+  purge: [
+    `./pages/*.js`,
+    `./pages/**/*.js`,
+    `./components/*.js`,
+    `./components/**/*.js`,
+  ],
   darkMode: `media`,
   theme: {
     fontFamily: {
