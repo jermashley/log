@@ -2,16 +2,15 @@ const colors = require(`tailwindcss/colors`)
 const typography = require(`@tailwindcss/typography`)
 
 module.exports = {
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true
+  purge: {
+    content: [
+      `./pages/*.js`,
+      `./pages/**/*.js`,
+      `./components/*.js`,
+      `./components/**/*.js`,
+      `./layouts/*.js`,
+    ],
   },
-  purge: [
-    `./pages/*.js`,
-    `./pages/**/*.js`,
-    `./components/*.js`,
-    `./components/**/*.js`,
-  ],
   darkMode: `media`,
   theme: {
     fontFamily: {
