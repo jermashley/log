@@ -1,22 +1,28 @@
 import axios from 'axios'
 import WorkCard from '@components/WorkCard'
+import HeadMeta from '@components/HeadMeta'
 
 const Works = ({ works }) => {
   return (
-    <section className="w-full grid grid-cols-1 grid-flow-row gap-6">
-      {works.map((work) => (
-        <WorkCard work={work} key={work.id} />
-      ))}
-    </section>
+    <>
+      <HeadMeta
+        title="Work Portfolio"
+        description="Howdy! I'm Jeremiah and I design and develop websites and webapps. Here are some of my favorite projects — from web work to photo and video to print design."
+      />
+
+      <section className="w-full grid grid-cols-1 grid-flow-row gap-6">
+        {works.map((work) => (
+          <WorkCard work={work} key={work.id} />
+        ))}
+      </section>
+    </>
   )
 }
 
 export const getStaticProps = async () => {
   const works = await axios
-    .post(
-      `https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master`,
-      {
-        query: `query {
+    .post(process.env.GRAPH_CMS_API_ENDPOINT, {
+      query: `query {
         works {
           id
           title
@@ -44,8 +50,7 @@ export const getStaticProps = async () => {
           summary
         }
       }`,
-      },
-    )
+    })
     .then((res) => {
       return res.data.data.works
     })

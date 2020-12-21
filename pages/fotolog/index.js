@@ -83,10 +83,8 @@ const FotoLogs = ({ fotoLogs }) => {
 
 export const getStaticProps = async () => {
   const fotoLogs = await axios
-    .post(
-      `https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master`,
-      {
-        query: `query {
+    .post(process.env.GRAPH_CMS_API_ENDPOINT, {
+      query: `query {
           fotoLogs {
             id
             photos {
@@ -108,8 +106,7 @@ export const getStaticProps = async () => {
             }
           }
         }`,
-      },
-    )
+    })
     .then((res) => {
       return res.data.data.fotoLogs
     })

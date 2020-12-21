@@ -24,16 +24,13 @@ const FotoLog = ({ fotoLog }) => {
 
 export const getStaticPaths = async () => {
   const fotoLogPaths = await axios
-    .post(
-      `https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master`,
-      {
-        query: `query {
+    .post(process.env.GRAPH_CMS_API_ENDPOINT, {
+      query: `query {
         fotoLogs {
           id
         }
       }`,
-      },
-    )
+    })
     .then((res) => {
       return res.data.data.fotoLogs
     })
@@ -47,10 +44,8 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const fotoLog = await axios
-    .post(
-      `https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master`,
-      {
-        query: `query {
+    .post(process.env.GRAPH_CMS_API_ENDPOINT, {
+      query: `query {
           fotoLog (where: {id: "${params.id}"}) {
             id
             markdown
@@ -71,8 +66,7 @@ export const getStaticProps = async ({ params }) => {
             }
           }
         }`,
-      },
-    )
+    })
     .then((res) => {
       return res.data.data.fotoLog
     })
