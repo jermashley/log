@@ -27,7 +27,7 @@ const FotoLogs = ({ fotoLogs }) => {
       <style jsx>{`
         section {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 216px));
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           grid-gap: 0.75rem;
         }
 
@@ -92,8 +92,8 @@ export const getStaticProps = async () => {
               url(transformation: {
                 image: {
                   resize: {
-                    width: 400,
-                    height: 400,
+                    width: 800,
+                    height: 800,
                     fit: clip
                   }
                 }
