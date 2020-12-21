@@ -13,7 +13,7 @@ const LogCard = ({ log }) => {
           //   gridTemplateRows: `auto 1fr`,
           // }}
         >
-          <div className="transition-opacity duration-500 col-span-1 md:col-span-4 opacity-50 group-hover:opacity-100 w-full h-40 md:h-auto">
+          <div className="transition-opacity duration-500 col-span-1 md:col-span-4 w-full h-40 md:h-auto">
             <img
               src={log.hero.url}
               alt=""

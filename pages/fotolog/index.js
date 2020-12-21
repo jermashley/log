@@ -27,7 +27,7 @@ const FotoLogs = ({ fotoLogs }) => {
       <style jsx>{`
         section {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(200px, 216px));
           grid-gap: 0.75rem;
         }
 
