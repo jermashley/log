@@ -33,8 +33,7 @@ export const getStaticProps = async () => {
               url(transformation: {
                 image: {
                   resize: {
-                    width: 200,
-                    height: 160,
+                    width: 800,
                     fit: clip
                   }
                 }
