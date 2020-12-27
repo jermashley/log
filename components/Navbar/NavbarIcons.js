@@ -30,9 +30,9 @@ const NavbarIcons = () => {
   }
 
   return (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-flow-col gap-2">
       <Link href={BLOG_BASE_PATH}>
-        <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
+        <a className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
           <FontAwesomeIcon
             icon={faFeather}
             className={setIconAccent(BLOG_BASE_PATH)}
@@ -41,7 +41,7 @@ const NavbarIcons = () => {
       </Link>
 
       <Link href={WORK_BASE_PATH}>
-        <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
+        <a className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
           <FontAwesomeIcon
             icon={faPencilRuler}
             className={setIconAccent(WORK_BASE_PATH)}
@@ -50,7 +50,7 @@ const NavbarIcons = () => {
       </Link>
 
       <Link href={PHOTOGRAPHY_BASE_PATH}>
-        <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
+        <a className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
           <FontAwesomeIcon
             icon={faCameraAlt}
             className={setIconAccent(PHOTOGRAPHY_BASE_PATH)}
@@ -59,7 +59,7 @@ const NavbarIcons = () => {
       </Link>
 
       <Link href={ABOUT_BASE_PATH}>
-        <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
+        <a className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
           <FontAwesomeIcon
             icon={faUser}
             className={setIconAccent(ABOUT_BASE_PATH)}

@@ -1,4 +1,11 @@
 import HeadMeta from '@components/HeadMeta'
+import {
+  GITLAB_PROFILE_URL,
+  TWITTER_PROFILE_URL,
+} from '@lib/constants/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGitlab, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import Link from 'next/link'
 
 const Home = () => {
   return (
@@ -11,7 +18,7 @@ const Home = () => {
       <section
         className="flex-grow flex flex-col justify-center items-start"
         style={{
-          minHeight: `60vh`,
+          minHeight: `65vh`,
           height: `100%`,
         }}
       >
@@ -19,11 +26,37 @@ const Home = () => {
           Howdy
         </h1>
 
-        <p className="font-medium text-2xl text-coolGray-700 dark:text-coolGray-200 leading-relaxed mt-4 w-4/5">
+        <p className="font-medium text-2xl text-coolGray-700 dark:text-coolGray-200 leading-relaxed mt-4 mb-6 w-4/5">
           Welcome to my space! My name is Jeremiah Ashley and I&apos;m a{` `}
           <span className="text-pink-500">developer</span> and{` `}
           <span className="text-pink-500">designer</span>.
         </p>
+
+        <div className="grid gap-2 grid-flow-col">
+          <a
+            href={TWITTER_PROFILE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+          >
+            <FontAwesomeIcon
+              icon={faTwitter}
+              className="text-xl text-coolGray-600 dark:text-coolGray-200 hover:text-pink-500"
+            />
+          </a>
+
+          <a
+            href={GITLAB_PROFILE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+          >
+            <FontAwesomeIcon
+              icon={faGitlab}
+              className="text-xl text-coolGray-600 dark:text-coolGray-200 hover:text-pink-500"
+            />
+          </a>
+        </div>
       </section>
     </>
   )
