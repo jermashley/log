@@ -18,3 +18,14 @@ export const snakeToTitleCase = (string) => {
 
   return transformedWords
 }
+
+export const toCapitalCase = (word) => {
+  let wordArray = [...word]
+
+  wordArray = [
+    wordArray[0].toUpperCase(),
+    ...wordArray.slice(1, wordArray.length),
+  ]
+
+  return wordArray
+}

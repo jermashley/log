@@ -10,7 +10,7 @@ const ProfileIcon = ({ isActive }) => {
   return (
     <svg
       className={`fill-current ${
-        active ? `text-pink-500` : `text-coolGray-800 dark:text-coolGray-400`
+        active ? `text-pink-500` : `text-coolGray-600 dark:text-coolGray-200`
       }`}
       width="20"
       height="20"

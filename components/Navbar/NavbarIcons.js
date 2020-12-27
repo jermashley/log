@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import FeatherIcon from '@components/Icons/FeatherIcon'
-import PenToolIcon from '@components/Icons/PenToolIcon'
-import CameraIcon from '@components/Icons/CameraIcon'
-import ProfileIcon from '@components/Icons/ProfileIcon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faFeather,
+  faPencilRuler,
+  faCameraAlt,
+  faUser,
+} from '@fortawesome/pro-duotone-svg-icons'
 import {
   BLOG_BASE_PATH,
   WORK_BASE_PATH,
@@ -20,29 +23,47 @@ const NavbarIcons = () => {
     setPath(`/${pathname.split(`/`)[1]}`)
   }, [pathname])
 
+  const setIconAccent = (string) => {
+    return path.includes(string)
+      ? `text-pink-500`
+      : `text-coolGray-600 dark:text-coolGray-200`
+  }
+
   return (
     <div className="grid grid-cols-4 gap-2">
       <Link href={BLOG_BASE_PATH}>
         <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
-          <FeatherIcon isActive={path.includes(BLOG_BASE_PATH)} />
+          <FontAwesomeIcon
+            icon={faFeather}
+            className={setIconAccent(BLOG_BASE_PATH)}
+          />
         </a>
       </Link>
 
       <Link href={WORK_BASE_PATH}>
         <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
-          <PenToolIcon isActive={path.includes(WORK_BASE_PATH)} />
+          <FontAwesomeIcon
+            icon={faPencilRuler}
+            className={setIconAccent(WORK_BASE_PATH)}
+          />
         </a>
       </Link>
 
       <Link href={PHOTOGRAPHY_BASE_PATH}>
         <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
-          <CameraIcon isActive={path.includes(PHOTOGRAPHY_BASE_PATH)} />
+          <FontAwesomeIcon
+            icon={faCameraAlt}
+            className={setIconAccent(PHOTOGRAPHY_BASE_PATH)}
+          />
         </a>
       </Link>
 
       <Link href={ABOUT_BASE_PATH}>
         <a className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800">
-          <ProfileIcon isActive={path.includes(ABOUT_BASE_PATH)} />
+          <FontAwesomeIcon
+            icon={faUser}
+            className={setIconAccent(ABOUT_BASE_PATH)}
+          />
         </a>
       </Link>
     </div>
