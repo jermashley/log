@@ -60,7 +60,7 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
               {isHomePage ? heading : <FontAwesomeIcon icon={homeIcon} />}
             </a>
           </Link>
-          `
+
           {!isHomePage && (
             <>
               /
