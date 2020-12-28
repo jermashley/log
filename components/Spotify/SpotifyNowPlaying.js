@@ -28,13 +28,13 @@ const SpotifyNowPlaying = () => {
             </h3>
           </div>
 
-          <div className="grid grid-rows-2 auto-cols-min gap-x-3 gap-y-1">
-            <div
-              className="row-start-1 row-span-2 col-start-1 rounded overflow-hidden"
-              style={{
-                gridTemplateColumns: `4rem 1fr`,
-              }}
-            >
+          <div
+            className="grid grid-rows-2 gap-x-3 gap-y-1"
+            style={{
+              gridTemplateColumns: `4rem 1fr`,
+            }}
+          >
+            <div className="row-start-1 row-span-2 col-start-1 rounded overflow-hidden">
               <Image
                 src={nowPlaying.data.item.album.images[1].url}
                 width={64}
@@ -49,7 +49,7 @@ const SpotifyNowPlaying = () => {
                 href={nowPlaying.data.item.external_urls.spotify}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-color duration-500 font-bold text-xl text-coolGray-700 dark:text-coolGray-400 hover:text-pink-500 dark:hover:text-pink-400 leading-none whitespace-nowrap"
+                className="transition-color duration-500 font-bold text-lg text-coolGray-700 dark:text-coolGray-400 hover:text-pink-500 dark:hover:text-pink-400 leading-none"
               >
                 {nowPlaying.data.item.name}
               </a>
@@ -81,7 +81,7 @@ const SpotifyNowPlaying = () => {
             </div>
 
             <div className="col-start-2 row-start-2 self-start">
-              <p className="font-normal text-base text-coolGray-600 dark:text-coolGray-500 leading-none whitespace-nowrap">
+              <p className="font-normal text-sm text-coolGray-600 dark:text-coolGray-500 leading-none">
                 {nowPlaying.data.item.artists.map((artist, index) => {
                   const artistsLength = nowPlaying.data.item.artists.length
 
