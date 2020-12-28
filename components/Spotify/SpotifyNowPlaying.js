@@ -6,8 +6,6 @@ import { faSignalStream } from '@fortawesome/pro-regular-svg-icons'
 import { useQuery } from 'react-query'
 
 const SpotifyNowPlaying = () => {
-  const [nowPlaying, setNowPlaying] = useState(null)
-
   const { isLoading, error, data, isFetching } = useQuery(`getNowPlaying`, () =>
     axios.get(`/api/nowPlaying`).then((res) => res.data),
   )
@@ -25,7 +23,7 @@ const SpotifyNowPlaying = () => {
         </h3>
       </div>
 
-      {!error && !isLoading && !isFetching && data.is_playing ? (
+      {!error && !isLoading && !isFetching && data.isPlaying ? (
         <>
           <div
             className="grid grid-rows-2 gap-x-3 gap-y-1"

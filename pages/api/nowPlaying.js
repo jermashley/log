@@ -9,12 +9,12 @@ export default async (req, res) => {
     return res.status(204).json({ isPlaying: false })
   }
 
-  const { item } = await data
+  const { item, is_playing } = await data
 
   res.setHeader(
     `Cache-Control`,
     `public, s-maxage=60, stale-while-revalidate=30`,
   )
 
-  return res.status(200).json({ item: item })
+  return res.status(200).json({ item, isPlaying: is_playing })
 }
