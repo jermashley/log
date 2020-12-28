@@ -3,31 +3,30 @@ import axios from 'axios'
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignalStream } from '@fortawesome/pro-regular-svg-icons'
+import { useQuery } from 'react-query'
 
 const SpotifyNowPlaying = () => {
   const [nowPlaying, setNowPlaying] = useState(null)
 
-  useEffect(() => {
-    axios.get(`/api/nowPlaying`).then((res) => {
-      setNowPlaying(res)
-    })
-  }, [])
+  const { isLoading, error, data, isFetching } = useQuery(`getNowPlaying`, () =>
+    axios.get(`/api/nowPlaying`).then((res) => res.data),
+  )
 
   return (
     <>
-      {nowPlaying?.status === 200 ? (
+      <div className="grid grid-flow-col auto-cols-min gap-2 items-center mb-3">
+        <FontAwesomeIcon
+          icon={faSignalStream}
+          className="text-2xl text-coolGray-600"
+        />
+
+        <h3 className="font-semibold text-xxs text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
+          Now Playing
+        </h3>
+      </div>
+
+      {!error && !isLoading && !isFetching && data.is_playing ? (
         <>
-          <div className="grid grid-flow-col auto-cols-min gap-2 items-center mb-3">
-            <FontAwesomeIcon
-              icon={faSignalStream}
-              className="text-2xl text-coolGray-600"
-            />
-
-            <h3 className="font-semibold text-xxs text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
-              Now Playing
-            </h3>
-          </div>
-
           <div
             className="grid grid-rows-2 gap-x-3 gap-y-1"
             style={{
@@ -36,7 +35,7 @@ const SpotifyNowPlaying = () => {
           >
             <div className="row-start-1 row-span-2 col-start-1 rounded overflow-hidden">
               <Image
-                src={nowPlaying.data.item.album.images[1].url}
+                src={data.item.album.images[1].url}
                 width={64}
                 height={64}
                 alt=""
@@ -46,15 +45,15 @@ const SpotifyNowPlaying = () => {
 
             <div className="col-start-2 row-start-1 self-end grid grid-flow-col gap-3">
               <a
-                href={nowPlaying.data.item.external_urls.spotify}
+                href={data.item.external_urls.spotify}
                 target="_blank"
                 rel="noreferrer"
                 className="transition-color duration-500 font-bold text-lg text-coolGray-700 dark:text-coolGray-400 hover:text-pink-500 dark:hover:text-pink-400 leading-none"
               >
-                {nowPlaying.data.item.name}
+                {data.item.name}
               </a>
 
-              {nowPlaying.data.item.explicit && (
+              {data.item.explicit && (
                 <svg
                   width="57"
                   height="16"
@@ -82,8 +81,8 @@ const SpotifyNowPlaying = () => {
 
             <div className="col-start-2 row-start-2 self-start">
               <p className="font-normal text-sm text-coolGray-600 dark:text-coolGray-500 leading-none">
-                {nowPlaying.data.item.artists.map((artist, index) => {
-                  const artistsLength = nowPlaying.data.item.artists.length
+                {data.item.artists.map((artist, index) => {
+                  const artistsLength = data.item.artists.length
 
                   let string
 
@@ -103,8 +102,8 @@ const SpotifyNowPlaying = () => {
           </div>
         </>
       ) : (
-        <h1 className="font-medium text-2xl text-coolGray-500 dark:text-coolGray-400 leading-relaxed">
-          Nothing Playing
+        <h1 className="font-medium text-xl text-coolGray-400 dark:text-coolGray-400 leading-relaxed">
+          Nothing playing yet!
         </h1>
       )}
     </>
