@@ -1,11 +1,16 @@
 import HeadMeta from '@components/HeadMeta'
 import {
   GITLAB_PROFILE_URL,
+  LINKEDIN_PROFILE_URL,
   TWITTER_PROFILE_URL,
 } from '@lib/constants/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGitlab, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import Link from 'next/link'
+import {
+  faGitlab,
+  faTwitter,
+  faLinkedin,
+} from '@fortawesome/free-brands-svg-icons'
+import SpotifyNowPlaying from '@components/Spotify/SpotifyNowPlaying'
 
 const Home = () => {
   return (
@@ -37,27 +42,32 @@ const Home = () => {
             href={TWITTER_PROFILE_URL}
             target="_blank"
             rel="noreferrer"
-            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <FontAwesomeIcon
-              icon={faTwitter}
-              className="text-xl text-coolGray-600 dark:text-coolGray-200 hover:text-pink-500"
-            />
+            <FontAwesomeIcon icon={faTwitter} />
           </a>
 
           <a
             href={GITLAB_PROFILE_URL}
             target="_blank"
             rel="noreferrer"
-            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <FontAwesomeIcon
-              icon={faGitlab}
-              className="text-xl text-coolGray-600 dark:text-coolGray-200 hover:text-pink-500"
-            />
+            <FontAwesomeIcon icon={faGitlab} />
+          </a>
+
+          <a
+            href={LINKEDIN_PROFILE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
           </a>
         </div>
       </section>
+
+      <SpotifyNowPlaying />
     </>
   )
 }
