@@ -8,11 +8,9 @@ const SpotifyNowPlaying = () => {
   const [nowPlaying, setNowPlaying] = useState(null)
 
   useEffect(() => {
-    setInterval(() => {
-      axios.get(`/api/nowPlaying`).then((res) => {
-        setNowPlaying(res)
-      })
-    }, 18000)
+    axios.get(`/api/nowPlaying`).then((res) => {
+      setNowPlaying(res)
+    })
   }, [])
 
   return (
