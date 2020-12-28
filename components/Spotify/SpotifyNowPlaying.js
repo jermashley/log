@@ -31,7 +31,7 @@ const SpotifyNowPlaying = () => {
               gridTemplateColumns: `4rem 1fr`,
             }}
           >
-            <div className="row-start-1 row-span-2 col-start-1 rounded overflow-hidden">
+            <div className="row-start-1 row-span-2 col-start-1">
               <Image
                 src={data.item.album.images[1].url}
                 width={64}
