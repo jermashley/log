@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
-import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignalStream } from '@fortawesome/pro-regular-svg-icons'
 import { useQuery } from 'react-query'
