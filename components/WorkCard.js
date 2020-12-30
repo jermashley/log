@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { WORK_BASE_PATH } from '@lib/constants/navigation'
 import DateString from '@components/DateString'
 import { snakeToTitleCase } from '@utils/stringCaseConversions'
@@ -14,7 +15,8 @@ const WorkCard = ({ work }) => {
           }}
         >
           <div className="w-full h-auto">
-            <img src={work.hero.url} alt="" />
+            <Image width={672} height={352} src={work.hero.url} alt="" />
+            {/*<img src={work.hero.url} alt="" />*/}
           </div>
 
           <div className="px-6 py-8">
