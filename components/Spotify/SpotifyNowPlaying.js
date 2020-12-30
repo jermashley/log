@@ -2,7 +2,7 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignalStream } from '@fortawesome/pro-regular-svg-icons'
 import { useQuery } from 'react-query'
-import SpotifyTrackGrid from '@components/SpotifyTrackGrid'
+import SpotifyTrackGrid from '@components/Spotify/SpotifyTrackGrid'
 
 const SpotifyNowPlaying = () => {
   const { isLoading, error, data, isFetching } = useQuery(`getNowPlaying`, () =>
@@ -11,7 +11,7 @@ const SpotifyNowPlaying = () => {
 
   return (
     <>
-      <div className="grid grid-flow-col auto-cols-min gap-2 items-center mb-3">
+      <div className="grid grid-flow-col auto-cols-min gap-2 items-center mb-4">
         <FontAwesomeIcon
           icon={faSignalStream}
           className="text-2xl text-coolGray-600"

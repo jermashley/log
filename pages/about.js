@@ -1,7 +1,9 @@
 import ReactMarkdown from 'react-markdown'
 import HeadMeta from '@components/HeadMeta'
+import SpotifyTopTracks from '@components/Spotify/SpotifyTopTracks'
+import axios from 'axios'
 
-const About = () => {
+const About = ({ tracks }) => {
   const markdownBlock = `Hey there! I'm Jeremiah and I'm currently working at [Prologue Technology](https://prologuetechnology.com/) as a Software Support Engineer. The past 15 years have given me the opportunity to work in a variety of environments ranging from live television production to web application development to photo and video production.
   
 Drop by and say hi on [Twitter](https://twitter.com/jermashley)!
@@ -18,11 +20,25 @@ Drop by and say hi on [Twitter](https://twitter.com/jermashley)!
         About
       </h1>
 
-      <article className="prose dark:prose-dark max-w-none">
+      <article className="prose dark:prose-dark max-w-none mb-12">
         <ReactMarkdown source={markdownBlock} />
       </article>
+
+      <SpotifyTopTracks tracks={tracks} />
     </>
   )
+}
+
+export const getStaticProps = async () => {
+  const { items } = await axios
+    .get(`${process.env.BASE_URL}/api/topTracks`)
+    .then((res) => res.data)
+
+  return {
+    props: {
+      tracks: items,
+    },
+  }
 }
 
 export default About
