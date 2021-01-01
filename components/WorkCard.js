@@ -16,7 +16,6 @@ const WorkCard = ({ work }) => {
         >
           <div className="w-full h-auto">
             <Image width={672} height={352} src={work.hero.url} alt="" />
-            {/*<img src={work.hero.url} alt="" />*/}
           </div>
 
           <div className="px-6 py-8">

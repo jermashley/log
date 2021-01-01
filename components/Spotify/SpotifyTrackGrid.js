@@ -35,18 +35,17 @@ const SpotifyTrackGrid = ({ track }) => {
           const trailComma = artistsLength > index + 1 && artistsLength >= 2
 
           return (
-            <>
+            <div className="inline" key={artist.id}>
               <a
                 href={artist.external_urls.spotify}
                 target="_blank"
                 rel="noreferrer"
                 className="transition-color duration-500 hover:text-pink-500 dark:hover:text-pink-400"
-                key={artist.id}
               >
                 {artist.name}
               </a>
               {trailComma && `, `}
-            </>
+            </div>
           )
         })}
       </div>

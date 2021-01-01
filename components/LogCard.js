@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { BLOG_BASE_PATH } from '@lib/constants/navigation'
 import DateString from './DateString'
+import Image from 'next/image'
 
 const LogCard = ({ log }) => {
   return (
@@ -8,11 +9,12 @@ const LogCard = ({ log }) => {
       <Link href={`${BLOG_BASE_PATH}/${log.slug}`}>
         <a>
           <div className="LogCard group transition-all duration-500 grid grid-cols-1 grid-rows-2 gap-4 md:grid-cols-12 md:grid-rows-1 md:gap-8 w-full h-auto md:h-40 bg-coolGray-100 dark:bg-coolGray-1000 shadow-none hover:shadow-2xl rounded-md overflow-hidden transform-gpu scale-100 hover:scale-105">
-            <div className="transition-opacity duration-500 col-span-1 md:col-span-4 w-full h-56 md:h-auto">
-              <img
+            <div className="relative transition-opacity duration-500 col-span-1 md:col-span-4 w-full h-56 md:h-auto">
+              <Image
                 src={log.hero.url}
                 alt=""
-                className="w-full h-full object-cover object-center"
+                layout="fill"
+                objectFit="cover"
               />
             </div>
 
