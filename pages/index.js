@@ -18,6 +18,7 @@ const Home = () => {
       <HeadMeta
         title="Home"
         description="Howdy! I'm Jeremiah and I design and develop websites and webapps. I am also a hobby photographer and video producer. Don't hesitate to shoot me a message or follow me on all the sites — I'd love to say hi!"
+        imageUrl="https://media.graphcms.com/8F3BtEKMSaedw4kCLl17"
       />
 
       <section
