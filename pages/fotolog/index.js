@@ -1,6 +1,7 @@
 import axios from 'axios'
 import Link from 'next/link'
-import CopyIcon from '@components/Icons/CopyIcon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClone } from '@fortawesome/pro-duotone-svg-icons'
 
 const FotoLogs = ({ fotoLogs }) => {
   return (
@@ -12,8 +13,8 @@ const FotoLogs = ({ fotoLogs }) => {
           <Link href={`fotolog/${fotoLog.id}`} key={fotoLog.id}>
             <a>
               {hasMultiplePhotos && (
-                <span>
-                  <CopyIcon />
+                <span className="text-white">
+                  <FontAwesomeIcon icon={faClone} />
                 </span>
               )}
               <div>
