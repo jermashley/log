@@ -13,8 +13,8 @@ const FotoLogs = ({ fotoLogs }) => {
           <Link href={`fotolog/${fotoLog.id}`} key={fotoLog.id}>
             <a>
               {hasMultiplePhotos && (
-                <span className="text-white">
-                  <FontAwesomeIcon icon={faClone} />
+                <span className="text-white text-sm">
+                  <FontAwesomeIcon icon={faClone} fixedWidth />
                 </span>
               )}
               <div>
@@ -28,8 +28,8 @@ const FotoLogs = ({ fotoLogs }) => {
       <style jsx>{`
         section {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          grid-gap: 0.75rem;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 0.5rem;
         }
 
         section > a {
@@ -72,10 +72,8 @@ const FotoLogs = ({ fotoLogs }) => {
         section > a > span {
           z-index: 10;
           position: absolute;
-          width: 2rem;
-          height: 2rem;
-          top: 0.5rem;
-          right: 0.5rem;
+          top: 0.75rem;
+          right: 0.75rem;
         }
       `}</style>
     </section>
