@@ -39,7 +39,6 @@ const HeadMeta = ({ title, description, imageUrl }) => {
       )}
 
       {/* Favicon */}
-
       <link
         rel="apple-touch-icon"
         sizes="180x180"
