@@ -18,7 +18,7 @@ const Log = ({ log }) => {
         </h1>
 
         <DateString
-          className="block font-semibold text-coolGray-500 text-xxs uppercase mb-12"
+          className="block font-semibold text-coolGray-500 text-2xs uppercase mb-12"
           timeStamp={log.publishedAt}
           dateFormat="MMMM dd, yyyy"
         />

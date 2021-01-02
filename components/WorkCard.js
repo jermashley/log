@@ -24,7 +24,7 @@ const WorkCard = ({ work }) => {
             </h2>
 
             <DateString
-              className="block font-semibold text-coolGray-500 text-xxs uppercase mb-4"
+              className="block font-semibold text-coolGray-500 text-2xs uppercase mb-4"
               timeStamp={work.publishedAt}
               dateFormat="MMMM dd, yyyy"
             />
@@ -32,7 +32,7 @@ const WorkCard = ({ work }) => {
             <div className="grid grid-flow-col auto-cols-min gap-2 mb-4">
               {work.categories.map((category) => (
                 <span
-                  className="block px-2 py-1 rounded bg-coolGray-200 dark:bg-coolGray-800 text-coolGray-500 dark:text-coolGray-400 text-xxs font-medium whitespace-nowrap leading-snug"
+                  className="block px-2 py-1 rounded bg-coolGray-200 dark:bg-coolGray-800 text-coolGray-500 dark:text-coolGray-400 text-2xs font-medium whitespace-nowrap leading-snug"
                   key={`${work.id}-${category}`}
                 >
                   {snakeToTitleCase(category)}

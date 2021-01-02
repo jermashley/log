@@ -24,7 +24,7 @@ const LogCard = ({ log }) => {
               </h2>
 
               <DateString
-                className="font-semibold text-coolGray-500 text-xxs uppercase mb-2"
+                className="font-semibold text-coolGray-500 text-2xs uppercase mb-2"
                 timeStamp={log.publishedAt}
                 dateFormat="MMMM dd, yyyy"
               />

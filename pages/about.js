@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import HeadMeta from '@components/HeadMeta'
-import SpotifyTopTracks from '@components/Spotify/SpotifyTopTracks'
+import SpotifyTopTracks from '@components/Spotify/SpotifyTop'
 import axios from 'axios'
 
 const About = ({ tracks }) => {
@@ -15,10 +15,6 @@ Drop by and say hi on [Twitter](https://twitter.com/jermashley)!
         title="About"
         description="Howdy! I'm Jeremiah and I design and develop websites and webapps. I am also a hobby photographer and video producer. Don't hesitate to shoot me a message or follow me on all the sites — I'd love to say hi!"
       />
-
-      <h1 className="text-4xl text-coolGray-700 dark:text-coolGray-400 font-normal mb-3">
-        About
-      </h1>
 
       <article className="prose dark:prose-dark max-w-none mb-12">
         <ReactMarkdown source={markdownBlock} />

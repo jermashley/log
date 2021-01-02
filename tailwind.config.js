@@ -26,7 +26,7 @@ module.exports = {
         DEFAULT: `0px 32px 40px rgba(31, 33, 46, 0.15), 0px 24px 64px rgba(92, 112, 214, 0.1), 0px 16px 16px rgba(8, 18, 69, 0.1)`,
       },
       fontSize: {
-        xxs: `0.625rem`,
+        '2xs': `0.625rem`,
       },
       colors: {
         coolGray: {
