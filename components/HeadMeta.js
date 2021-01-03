@@ -62,6 +62,9 @@ const HeadMeta = ({ title, description, imageUrl }) => {
       <meta name="application-name" content="Jeremiah Ashley" />
       <meta name="msapplication-TileColor" content="#2b5797" />
       <meta name="theme-color" content="#ffffff" />
+
+      {/* Misc */}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
   )
 }

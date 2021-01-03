@@ -57,7 +57,11 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
                   : `text-coolGray-700 dark:text-coolGray-400 hover:text-pink-500 dark:hover:text-pink-400`
               }`}
             >
-              {isHomePage ? heading : <FontAwesomeIcon icon={homeIcon} />}
+              {isHomePage ? (
+                heading
+              ) : (
+                <FontAwesomeIcon icon={homeIcon} fixedWidth />
+              )}
             </a>
           </Link>
 

@@ -36,6 +36,7 @@ const NavbarIcons = () => {
           <FontAwesomeIcon
             icon={faFeather}
             className={setIconAccent(BLOG_BASE_PATH)}
+            fixedWidth
           />
         </a>
       </Link>
@@ -45,6 +46,7 @@ const NavbarIcons = () => {
           <FontAwesomeIcon
             icon={faPencilRuler}
             className={setIconAccent(WORK_BASE_PATH)}
+            fixedWidth
           />
         </a>
       </Link>
@@ -54,6 +56,7 @@ const NavbarIcons = () => {
           <FontAwesomeIcon
             icon={faCameraAlt}
             className={setIconAccent(PHOTOGRAPHY_BASE_PATH)}
+            fixedWidth
           />
         </a>
       </Link>
@@ -63,6 +66,7 @@ const NavbarIcons = () => {
           <FontAwesomeIcon
             icon={faUser}
             className={setIconAccent(ABOUT_BASE_PATH)}
+            fixedWidth
           />
         </a>
       </Link>

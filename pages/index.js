@@ -33,7 +33,7 @@ const Home = () => {
         </h1>
 
         <p className="font-medium text-2xl text-coolGray-700 dark:text-coolGray-200 leading-relaxed mt-4 mb-6 w-4/5">
-          Welcome to my space! My name is Jeremiah Ashley and I&apos;m a{` `}
+          Welcome to my space! My name is Jeremiah and I&apos;m a{` `}
           <span className="text-pink-500">developer</span> and{` `}
           <span className="text-pink-500">designer</span>.
         </p>
@@ -45,7 +45,7 @@ const Home = () => {
             rel="noreferrer"
             className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <FontAwesomeIcon icon={faTwitter} />
+            <FontAwesomeIcon icon={faTwitter} fixedWidth />
           </a>
 
           <a
@@ -54,7 +54,7 @@ const Home = () => {
             rel="noreferrer"
             className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <FontAwesomeIcon icon={faGitlab} />
+            <FontAwesomeIcon icon={faGitlab} fixedWidth />
           </a>
 
           <a
@@ -63,7 +63,7 @@ const Home = () => {
             rel="noreferrer"
             className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <FontAwesomeIcon icon={faLinkedin} />
+            <FontAwesomeIcon icon={faLinkedin} fixedWidth />
           </a>
         </div>
       </section>

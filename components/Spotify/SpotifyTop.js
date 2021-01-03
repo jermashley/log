@@ -9,6 +9,7 @@ const SpotifyTop = ({ tracks }) => {
         <FontAwesomeIcon
           icon={faAlbumCollection}
           className="text-3xl text-coolGray-500 dark:text-coolGray-400"
+          fixedWidth
         />
 
         <h3 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">

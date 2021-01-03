@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <DefaultLayout>
         <Component {...pageProps} />
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/*<ReactQueryDevtools initialIsOpen={false} />*/}
       </DefaultLayout>
     </QueryClientProvider>
   )

@@ -13,8 +13,9 @@ const SpotifyNowPlaying = () => {
     <>
       <div className="grid grid-flow-col auto-cols-min gap-4 items-center mb-8">
         <FontAwesomeIcon
-          icon={faSignalStream}
           className="text-3xl text-coolGray-500 dark:text-coolGray-400"
+          icon={faSignalStream}
+          fixedWidth
         />
 
         <h3 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
