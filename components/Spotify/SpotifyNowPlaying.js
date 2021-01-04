@@ -10,7 +10,7 @@ const SpotifyNowPlaying = () => {
   )
 
   return (
-    <>
+    <section>
       <div className="grid grid-flow-col auto-cols-min gap-4 items-center mb-8">
         <FontAwesomeIcon
           className="text-3xl text-coolGray-500 dark:text-coolGray-400"
@@ -18,9 +18,9 @@ const SpotifyNowPlaying = () => {
           fixedWidth
         />
 
-        <h3 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
+        <h5 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
           Now Playing
-        </h3>
+        </h5>
       </div>
 
       {!error && !isLoading && !isFetching && data.isPlaying ? (
@@ -30,7 +30,7 @@ const SpotifyNowPlaying = () => {
           Nothing playing yet!
         </h1>
       )}
-    </>
+    </section>
   )
 }
 

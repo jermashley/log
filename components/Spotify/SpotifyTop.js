@@ -4,7 +4,7 @@ import SpotifyTrackGrid from '@components/Spotify/SpotifyTrackGrid'
 
 const SpotifyTop = ({ tracks }) => {
   return (
-    <>
+    <section>
       <div className="grid grid-flow-col auto-cols-min gap-4 items-center mb-8">
         <FontAwesomeIcon
           icon={faAlbumCollection}
@@ -12,9 +12,9 @@ const SpotifyTop = ({ tracks }) => {
           fixedWidth
         />
 
-        <h3 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
+        <h5 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
           Top Tracks
-        </h3>
+        </h5>
       </div>
 
       <section className="grid grid-cols-1 gap-4">
@@ -22,7 +22,7 @@ const SpotifyTop = ({ tracks }) => {
           <SpotifyTrackGrid track={track} key={track.id} />
         ))}
       </section>
-    </>
+    </section>
   )
 }
 

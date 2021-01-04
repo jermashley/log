@@ -29,7 +29,7 @@ const SpotifyTrackGrid = ({ track }) => {
         </a>
       </div>
 
-      <div className="col-start-2 row-start-2 self-start font-normal text-sm text-coolGray-600 dark:text-coolGray-500 leading-none">
+      <div className="col-start-2 row-start-2 self-start">
         {track.artists.map((artist, index) => {
           const artistsLength = track.artists.length
           const trailComma = artistsLength > index + 1 && artistsLength >= 2
@@ -40,7 +40,7 @@ const SpotifyTrackGrid = ({ track }) => {
                 href={artist.external_urls.spotify}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-color duration-500 hover:text-pink-500 dark:hover:text-pink-400"
+                className="transition-color duration-500 font-normal text-sm leading-none text-coolGray-600 dark:text-coolGray-400 hover:text-pink-500 dark:hover:text-pink-400"
               >
                 {artist.name}
               </a>
