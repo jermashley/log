@@ -18,9 +18,9 @@ const SpotifyNowPlaying = () => {
           fixedWidth
         />
 
-        <h5 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
+        <p className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
           Now Playing
-        </h5>
+        </p>
       </div>
 
       {!error && !isLoading && !isFetching && data.isPlaying ? (

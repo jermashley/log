@@ -12,9 +12,9 @@ const SpotifyTop = ({ tracks }) => {
           fixedWidth
         />
 
-        <h5 className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
+        <p className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
           Top Tracks
-        </h5>
+        </p>
       </div>
 
       <section className="grid grid-cols-1 gap-4">

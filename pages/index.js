@@ -41,6 +41,7 @@ const Home = () => {
         <div className="grid gap-2 grid-flow-col">
           <a
             href={TWITTER_PROFILE_URL}
+            aria-label="Twitter"
             target="_blank"
             rel="noreferrer"
             className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
@@ -50,6 +51,7 @@ const Home = () => {
 
           <a
             href={GITLAB_PROFILE_URL}
+            aria-label="Gitlab"
             target="_blank"
             rel="noreferrer"
             className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
@@ -59,6 +61,7 @@ const Home = () => {
 
           <a
             href={LINKEDIN_PROFILE_URL}
+            aria-label="LinkedIn"
             target="_blank"
             rel="noreferrer"
             className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
