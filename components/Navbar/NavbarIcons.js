@@ -7,7 +7,7 @@ import {
   faPencilRuler,
   faCameraAlt,
   faUser,
-} from '@fortawesome/pro-duotone-svg-icons'
+} from '@fortawesome/pro-light-svg-icons'
 import {
   BLOG_BASE_PATH,
   WORK_BASE_PATH,

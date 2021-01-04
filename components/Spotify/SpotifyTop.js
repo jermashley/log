@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAlbumCollection } from '@fortawesome/pro-duotone-svg-icons'
+import { faAlbumCollection } from '@fortawesome/pro-light-svg-icons'
 import SpotifyTrackGrid from '@components/Spotify/SpotifyTrackGrid'
 
 const SpotifyTop = ({ tracks }) => {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClone } from '@fortawesome/pro-duotone-svg-icons'
+import { faClone } from '@fortawesome/pro-light-svg-icons'
 import HeadMeta from '@components/HeadMeta'
 
 const FotoLogs = ({ fotoLogs }) => {

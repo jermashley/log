@@ -7,7 +7,7 @@ import {
   faHouseDay,
   faHouseNight,
   faHouse,
-} from '@fortawesome/pro-duotone-svg-icons'
+} from '@fortawesome/pro-light-svg-icons'
 import NavbarIcons from './NavbarIcons'
 import { toCapitalCase } from '@utils/stringCaseConversions'
 

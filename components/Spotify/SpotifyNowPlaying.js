@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignalStream } from '@fortawesome/pro-duotone-svg-icons'
+import { faSignalStream } from '@fortawesome/pro-light-svg-icons'
 import { useQuery } from 'react-query'
 import SpotifyTrackGrid from '@components/Spotify/SpotifyTrackGrid'
 
