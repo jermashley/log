@@ -56,6 +56,7 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
                   ? `text-pink-500`
                   : `text-coolGray-700 dark:text-coolGray-400 hover:text-pink-500 dark:hover:text-pink-400`
               }`}
+              aria-label="Home"
             >
               {isHomePage ? (
                 heading
