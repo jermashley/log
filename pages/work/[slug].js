@@ -75,7 +75,7 @@ const Work = ({ work }) => {
                   <FontAwesomeIcon icon={icon(repository.repositoryHost)} />
                 </dt>
 
-                <dl className="transition-colors duration-500 bg-coolGray-100 dark:bg-coolGray-900 text-coolGray-600 dark:text-coolGray-300 hover:text-pink-500 rounded-br rounded-tr px-3 flex flex-col justify-center items-center text-2xs font-medium whitespace-nowrap leading-snug">
+                <dl className="transition-colors duration-500 bg-coolGray-100 dark:bg-coolGray-1000 text-coolGray-600 dark:text-coolGray-300 hover:text-pink-500 rounded-br rounded-tr px-3 flex flex-col justify-center items-center text-2xs font-medium whitespace-nowrap leading-snug">
                   <a href={repository.url} target="_blank" rel="noreferrer">
                     {repository.title}
                     <FontAwesomeIcon
