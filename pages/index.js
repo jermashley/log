@@ -1,65 +1,79 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import HeadMeta from '@components/HeadMeta'
+import {
+  GITLAB_PROFILE_URL,
+  LINKEDIN_PROFILE_URL,
+  TWITTER_PROFILE_URL,
+} from '@lib/constants/navigation'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faGitlab,
+  faTwitter,
+  faLinkedin,
+} from '@fortawesome/free-brands-svg-icons'
+import SpotifyNowPlaying from '@components/Spotify/SpotifyNowPlaying'
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <HeadMeta
+        title="Home"
+        description="Howdy! I'm Jeremiah and I design and develop websites and webapps. I am also a hobby photographer and video producer. Don't hesitate to shoot me a message or follow me on all the sites — I'd love to say hi!"
+        imageUrl="https://media.graphcms.com/8F3BtEKMSaedw4kCLl17"
+      />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+      <section
+        className="flex-grow flex flex-col justify-center items-start"
+        style={{
+          minHeight: `65vh`,
+          height: `100%`,
+        }}
+      >
+        <h1 className="text-6xl text-coolGray-700 dark:text-coolGray-200 font-light leading-loose">
+          Howdy
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+        <p className="font-medium text-2xl text-coolGray-700 dark:text-coolGray-200 leading-relaxed mt-4 mb-6 w-4/5">
+          Welcome to my space! My name is Jeremiah and I&apos;m a{` `}
+          <span className="text-pink-500">developer</span> and{` `}
+          <span className="text-pink-500">designer</span>.
         </p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
+        <div className="grid gap-2 grid-flow-col">
+          <a
+            href={TWITTER_PROFILE_URL}
+            aria-label="Twitter"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
+          >
+            <FontAwesomeIcon icon={faTwitter} fixedWidth />
           </a>
 
           <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
+            href={GITLAB_PROFILE_URL}
+            aria-label="Gitlab"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
+            <FontAwesomeIcon icon={faGitlab} fixedWidth />
           </a>
 
           <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
+            href={LINKEDIN_PROFILE_URL}
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
           >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
+            <FontAwesomeIcon icon={faLinkedin} fixedWidth />
           </a>
         </div>
-      </main>
+      </section>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      <SpotifyNowPlaying />
+    </>
   )
 }
+
+export default Home
