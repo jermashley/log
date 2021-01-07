@@ -36,6 +36,11 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
       prefersColorScheme.addEventListener(`change`, (e) => {
         setHomeIcon(e.matches ? faHouseDay : faHouseNight)
       })
+
+      return () =>
+        prefersColorScheme.removeEventListener(`change`, (e) =>
+          console.log(e.matches),
+        )
     }
   }, null)
 
