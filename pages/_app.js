@@ -17,6 +17,23 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        {process.env.GOOGLE_TAG ?? (
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-RMK7NTGLK2"
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || []
+                function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date())
+      
+                gtag('config', '${process.env.GOOGLE_TAG}')`,
+              }}
+            />
+          </>
+        )}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
