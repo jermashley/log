@@ -35,7 +35,10 @@ const SpotifyTrackGrid = ({ track }) => {
           const trailComma = artistsLength > index + 1 && artistsLength >= 2
 
           return (
-            <div className="inline" key={artist.id}>
+            <div
+              className="inline text-coolGray-700 dark:text-coolGray-400"
+              key={artist.id}
+            >
               <a
                 href={artist.external_urls.spotify}
                 target="_blank"
