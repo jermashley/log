@@ -1,0 +1,4012 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+"An object with an ID"
+interface Node {
+    "The id of the object."
+    id: ID!
+    "The Stage of an object"
+    stage: Stage!
+}
+
+type Aggregate {
+    count: Int!
+}
+
+"Asset system model"
+type Asset implements Node {
+    "The time the document was created"
+    createdAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    "Get the document in other stages"
+    documentInStages(
+        "Decides if the current stage should be included or not"
+        includeCurrent: Boolean! = false,
+        "Decides if the documents should match the parent documents locale or should use the fallback order defined in the tree"
+        inheritLocale: Boolean! = false,
+        "Potential stages that should be returned"
+        stages: [Stage!]! = [PUBLISHED, DRAFT]
+    ): [Asset!]!
+    "The file name"
+    fileName: String!
+    "The file handle"
+    handle: String!
+    "The height of the file"
+    height: Float
+    "List of Asset versions"
+    history(
+        limit: Int! = 10,
+        skip: Int! = 0,
+        "This is optional and can be used to fetch the document version history for a specific stage instead of the current one"
+        stageOverride: Stage
+    ): [Version!]!
+    "The unique identifier"
+    id: ID!
+    "System Locale field"
+    locale: Locale!
+    "Get the other localizations for this document"
+    localizations(
+        "Decides if the current locale should be included or not"
+        includeCurrent: Boolean! = false,
+        "Potential locales that should be returned"
+        locales: [Locale!]! = [en, es_MX]
+    ): [Asset!]!
+    logHero(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `logHero` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!],
+        orderBy: LogOrderByInput,
+        skip: Int,
+        where: LogWhereInput
+    ): [Log!]!
+    "The mime type of the file"
+    mimeType: String
+    photosFotoLog(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `photosFotoLog` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!],
+        orderBy: FotoLogOrderByInput,
+        skip: Int,
+        where: FotoLogWhereInput
+    ): [FotoLog!]!
+    "The time the document was published. Null on documents in draft stage."
+    publishedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime
+    "The file size"
+    size: Float
+    "System stage field"
+    stage: Stage!
+    "The time the document was updated"
+    updatedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    "Get the url for the asset with provided transformations applied."
+    url(transformation: AssetTransformationInput): String!
+    "The file width"
+    width: Float
+    workHero(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `workHero` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!],
+        orderBy: WorkOrderByInput,
+        skip: Int,
+        where: WorkWhereInput
+    ): [Work!]!
+}
+
+"A connection to a list of items."
+type AssetConnection {
+    aggregate: Aggregate!
+    "A list of edges."
+    edges: [AssetEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type AssetEdge {
+    "A cursor for use in pagination."
+    cursor: String!
+    "The item at the end of the edge."
+    node: Asset!
+}
+
+type BatchPayload {
+    "The number of nodes that have been affected by the Batch operation."
+    count: Long!
+}
+
+"Representing a color value comprising of HEX, RGBA and css color values"
+type Color {
+    css: String!
+    hex: Hex!
+    rgba: RGBA!
+}
+
+type DocumentVersion {
+    createdAt: DateTime!
+    data: Json
+    id: ID!
+    revision: Int!
+    stage: Stage!
+}
+
+type FotoLog implements Node {
+    "The time the document was created"
+    createdAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    "Get the document in other stages"
+    documentInStages(
+        "Decides if the current stage should be included or not"
+        includeCurrent: Boolean! = false,
+        "Decides if the documents should match the parent documents locale or should use the fallback order defined in the tree"
+        inheritLocale: Boolean! = false,
+        "Potential stages that should be returned"
+        stages: [Stage!]! = [PUBLISHED, DRAFT]
+    ): [FotoLog!]!
+    "List of FotoLog versions"
+    history(
+        limit: Int! = 10,
+        skip: Int! = 0,
+        "This is optional and can be used to fetch the document version history for a specific stage instead of the current one"
+        stageOverride: Stage
+    ): [Version!]!
+    "The unique identifier"
+    id: ID!
+    "System Locale field"
+    locale: Locale!
+    "Get the other localizations for this document"
+    localizations(
+        "Decides if the current locale should be included or not"
+        includeCurrent: Boolean! = false,
+        "Potential locales that should be returned"
+        locales: [Locale!]! = [en, es_MX]
+    ): [FotoLog!]!
+    markdown: [String!]!
+    photos(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `photos` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!],
+        orderBy: AssetOrderByInput,
+        skip: Int,
+        where: AssetWhereInput
+    ): [Asset!]!
+    "The time the document was published. Null on documents in draft stage."
+    publishedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime
+    "System stage field"
+    stage: Stage!
+    "The time the document was updated"
+    updatedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+}
+
+"A connection to a list of items."
+type FotoLogConnection {
+    aggregate: Aggregate!
+    "A list of edges."
+    edges: [FotoLogEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type FotoLogEdge {
+    "A cursor for use in pagination."
+    cursor: String!
+    "The item at the end of the edge."
+    node: FotoLog!
+}
+
+"Representing a geolocation point with latitude and longitude"
+type Location {
+    distance(from: LocationInput!): Float!
+    latitude: Float!
+    longitude: Float!
+}
+
+type Log implements Node {
+    "The time the document was created"
+    createdAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    "Get the document in other stages"
+    documentInStages(
+        "Decides if the current stage should be included or not"
+        includeCurrent: Boolean! = false,
+        "Decides if the documents should match the parent documents locale or should use the fallback order defined in the tree"
+        inheritLocale: Boolean! = false,
+        "Potential stages that should be returned"
+        stages: [Stage!]! = [PUBLISHED, DRAFT]
+    ): [Log!]!
+    hero(
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `hero` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!]
+    ): Asset!
+    "List of Log versions"
+    history(
+        limit: Int! = 10,
+        skip: Int! = 0,
+        "This is optional and can be used to fetch the document version history for a specific stage instead of the current one"
+        stageOverride: Stage
+    ): [Version!]!
+    "The unique identifier"
+    id: ID!
+    "System Locale field"
+    locale: Locale!
+    "Get the other localizations for this document"
+    localizations(
+        "Decides if the current locale should be included or not"
+        includeCurrent: Boolean! = false,
+        "Potential locales that should be returned"
+        locales: [Locale!]! = [en, es_MX]
+    ): [Log!]!
+    markdown: [String!]!
+    "The time the document was published. Null on documents in draft stage."
+    publishedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime
+    slug: String!
+    "System stage field"
+    stage: Stage!
+    summary: String!
+    title: String!
+    "The time the document was updated"
+    updatedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+}
+
+"A connection to a list of items."
+type LogConnection {
+    aggregate: Aggregate!
+    "A list of edges."
+    edges: [LogEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type LogEdge {
+    "A cursor for use in pagination."
+    cursor: String!
+    "The item at the end of the edge."
+    node: Log!
+}
+
+type Mutation {
+    "Create one asset"
+    createAsset(data: AssetCreateInput!): Asset @deprecated(reason : "Asset mutations will be overhauled soon")
+    "Create one fotoLog"
+    createFotoLog(data: FotoLogCreateInput!): FotoLog
+    "Create one log"
+    createLog(data: LogCreateInput!): Log
+    "Create one repository"
+    createRepository(data: RepositoryCreateInput!): Repository
+    "Create one work"
+    createWork(data: WorkCreateInput!): Work
+    "Delete one asset from _all_ existing stages. Returns deleted document."
+    deleteAsset(
+        "Document to delete"
+        where: AssetWhereUniqueInput!
+    ): Asset
+    "Delete one fotoLog from _all_ existing stages. Returns deleted document."
+    deleteFotoLog(
+        "Document to delete"
+        where: FotoLogWhereUniqueInput!
+    ): FotoLog
+    "Delete one log from _all_ existing stages. Returns deleted document."
+    deleteLog(
+        "Document to delete"
+        where: LogWhereUniqueInput!
+    ): Log
+    "Delete many Asset documents"
+    deleteManyAssets(
+        "Documents to delete"
+        where: AssetManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (deleteManyAssetsConnection)")
+    "Delete many Asset documents, return deleted documents"
+    deleteManyAssetsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to delete"
+        where: AssetManyWhereInput
+    ): AssetConnection!
+    "Delete many FotoLog documents"
+    deleteManyFotoLogs(
+        "Documents to delete"
+        where: FotoLogManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (deleteManyFotoLogsConnection)")
+    "Delete many FotoLog documents, return deleted documents"
+    deleteManyFotoLogsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to delete"
+        where: FotoLogManyWhereInput
+    ): FotoLogConnection!
+    "Delete many Log documents"
+    deleteManyLogs(
+        "Documents to delete"
+        where: LogManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (deleteManyLogsConnection)")
+    "Delete many Log documents, return deleted documents"
+    deleteManyLogsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to delete"
+        where: LogManyWhereInput
+    ): LogConnection!
+    "Delete many Repository documents"
+    deleteManyRepositories(
+        "Documents to delete"
+        where: RepositoryManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (deleteManyRepositoriesConnection)")
+    "Delete many Repository documents, return deleted documents"
+    deleteManyRepositoriesConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to delete"
+        where: RepositoryManyWhereInput
+    ): RepositoryConnection!
+    "Delete many Work documents"
+    deleteManyWorks(
+        "Documents to delete"
+        where: WorkManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (deleteManyWorksConnection)")
+    "Delete many Work documents, return deleted documents"
+    deleteManyWorksConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to delete"
+        where: WorkManyWhereInput
+    ): WorkConnection!
+    "Delete one repository from _all_ existing stages. Returns deleted document."
+    deleteRepository(
+        "Document to delete"
+        where: RepositoryWhereUniqueInput!
+    ): Repository
+    "Delete one work from _all_ existing stages. Returns deleted document."
+    deleteWork(
+        "Document to delete"
+        where: WorkWhereUniqueInput!
+    ): Work
+    "Publish one asset"
+    publishAsset(
+        "Optional localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Publishing target stage"
+        to: [Stage!]! = [PUBLISHED],
+        "Document to publish"
+        where: AssetWhereUniqueInput!,
+        "Whether to include the default locale when publishBase is set"
+        withDefaultLocale: Boolean = true
+    ): Asset
+    "Publish one fotoLog"
+    publishFotoLog(
+        "Optional localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Publishing target stage"
+        to: [Stage!]! = [PUBLISHED],
+        "Document to publish"
+        where: FotoLogWhereUniqueInput!,
+        "Whether to include the default locale when publishBase is set"
+        withDefaultLocale: Boolean = true
+    ): FotoLog
+    "Publish one log"
+    publishLog(
+        "Optional localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Publishing target stage"
+        to: [Stage!]! = [PUBLISHED],
+        "Document to publish"
+        where: LogWhereUniqueInput!,
+        "Whether to include the default locale when publishBase is set"
+        withDefaultLocale: Boolean = true
+    ): Log
+    "Publish many Asset documents"
+    publishManyAssets(
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: AssetManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (publishManyAssetsConnection)")
+    "Publish many Asset documents"
+    publishManyAssetsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stage to find matching documents in"
+        from: Stage = DRAFT,
+        last: Int,
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        skip: Int,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: AssetManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): AssetConnection!
+    "Publish many FotoLog documents"
+    publishManyFotoLogs(
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: FotoLogManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (publishManyFotoLogsConnection)")
+    "Publish many FotoLog documents"
+    publishManyFotoLogsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stage to find matching documents in"
+        from: Stage = DRAFT,
+        last: Int,
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        skip: Int,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: FotoLogManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): FotoLogConnection!
+    "Publish many Log documents"
+    publishManyLogs(
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: LogManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (publishManyLogsConnection)")
+    "Publish many Log documents"
+    publishManyLogsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stage to find matching documents in"
+        from: Stage = DRAFT,
+        last: Int,
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        skip: Int,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: LogManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): LogConnection!
+    "Publish many Repository documents"
+    publishManyRepositories(
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: RepositoryManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (publishManyRepositoriesConnection)")
+    "Publish many Repository documents"
+    publishManyRepositoriesConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stage to find matching documents in"
+        from: Stage = DRAFT,
+        last: Int,
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        skip: Int,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: RepositoryManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): RepositoryConnection!
+    "Publish many Work documents"
+    publishManyWorks(
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: WorkManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (publishManyWorksConnection)")
+    "Publish many Work documents"
+    publishManyWorksConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stage to find matching documents in"
+        from: Stage = DRAFT,
+        last: Int,
+        "Document localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        skip: Int,
+        "Stages to publish documents to"
+        to: [Stage!]! = [PUBLISHED],
+        "Identifies documents in each stage to be published"
+        where: WorkManyWhereInput,
+        "Whether to include the default locale when publishBase is true"
+        withDefaultLocale: Boolean = true
+    ): WorkConnection!
+    "Publish one repository"
+    publishRepository(
+        "Optional localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Publishing target stage"
+        to: [Stage!]! = [PUBLISHED],
+        "Document to publish"
+        where: RepositoryWhereUniqueInput!,
+        "Whether to include the default locale when publishBase is set"
+        withDefaultLocale: Boolean = true
+    ): Repository
+    "Publish one work"
+    publishWork(
+        "Optional localizations to publish"
+        locales: [Locale!],
+        "Whether to publish the base document"
+        publishBase: Boolean = true,
+        "Publishing target stage"
+        to: [Stage!]! = [PUBLISHED],
+        "Document to publish"
+        where: WorkWhereUniqueInput!,
+        "Whether to include the default locale when publishBase is set"
+        withDefaultLocale: Boolean = true
+    ): Work
+    "Unpublish one asset from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only."
+    unpublishAsset(
+        "Stages to unpublish document from"
+        from: [Stage!]! = [PUBLISHED],
+        "Optional locales to unpublish. Unpublishing the default locale will completely remove the document from the selected stages"
+        locales: [Locale!],
+        "Unpublish complete document including default localization and relations from stages. Can be disabled."
+        unpublishBase: Boolean = true,
+        "Document to unpublish"
+        where: AssetWhereUniqueInput!
+    ): Asset
+    "Unpublish one fotoLog from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only."
+    unpublishFotoLog(
+        "Stages to unpublish document from"
+        from: [Stage!]! = [PUBLISHED],
+        "Optional locales to unpublish. Unpublishing the default locale will completely remove the document from the selected stages"
+        locales: [Locale!],
+        "Unpublish complete document including default localization and relations from stages. Can be disabled."
+        unpublishBase: Boolean = true,
+        "Document to unpublish"
+        where: FotoLogWhereUniqueInput!
+    ): FotoLog
+    "Unpublish one log from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only."
+    unpublishLog(
+        "Stages to unpublish document from"
+        from: [Stage!]! = [PUBLISHED],
+        "Optional locales to unpublish. Unpublishing the default locale will completely remove the document from the selected stages"
+        locales: [Locale!],
+        "Unpublish complete document including default localization and relations from stages. Can be disabled."
+        unpublishBase: Boolean = true,
+        "Document to unpublish"
+        where: LogWhereUniqueInput!
+    ): Log
+    "Unpublish many Asset documents"
+    unpublishManyAssets(
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        "Locales to unpublish"
+        locales: [Locale!],
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in each stage"
+        where: AssetManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (unpublishManyAssetsConnection)")
+    "Find many Asset documents that match criteria in specified stage and unpublish from target stages"
+    unpublishManyAssetsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        last: Int,
+        "Locales to unpublish"
+        locales: [Locale!],
+        skip: Int,
+        "Stage to find matching documents in"
+        stage: Stage = DRAFT,
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in draft stage"
+        where: AssetManyWhereInput
+    ): AssetConnection!
+    "Unpublish many FotoLog documents"
+    unpublishManyFotoLogs(
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        "Locales to unpublish"
+        locales: [Locale!],
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in each stage"
+        where: FotoLogManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (unpublishManyFotoLogsConnection)")
+    "Find many FotoLog documents that match criteria in specified stage and unpublish from target stages"
+    unpublishManyFotoLogsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        last: Int,
+        "Locales to unpublish"
+        locales: [Locale!],
+        skip: Int,
+        "Stage to find matching documents in"
+        stage: Stage = DRAFT,
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in draft stage"
+        where: FotoLogManyWhereInput
+    ): FotoLogConnection!
+    "Unpublish many Log documents"
+    unpublishManyLogs(
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        "Locales to unpublish"
+        locales: [Locale!],
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in each stage"
+        where: LogManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (unpublishManyLogsConnection)")
+    "Find many Log documents that match criteria in specified stage and unpublish from target stages"
+    unpublishManyLogsConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        last: Int,
+        "Locales to unpublish"
+        locales: [Locale!],
+        skip: Int,
+        "Stage to find matching documents in"
+        stage: Stage = DRAFT,
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in draft stage"
+        where: LogManyWhereInput
+    ): LogConnection!
+    "Unpublish many Repository documents"
+    unpublishManyRepositories(
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        "Locales to unpublish"
+        locales: [Locale!],
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in each stage"
+        where: RepositoryManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (unpublishManyRepositoriesConnection)")
+    "Find many Repository documents that match criteria in specified stage and unpublish from target stages"
+    unpublishManyRepositoriesConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        last: Int,
+        "Locales to unpublish"
+        locales: [Locale!],
+        skip: Int,
+        "Stage to find matching documents in"
+        stage: Stage = DRAFT,
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in draft stage"
+        where: RepositoryManyWhereInput
+    ): RepositoryConnection!
+    "Unpublish many Work documents"
+    unpublishManyWorks(
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        "Locales to unpublish"
+        locales: [Locale!],
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in each stage"
+        where: WorkManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (unpublishManyWorksConnection)")
+    "Find many Work documents that match criteria in specified stage and unpublish from target stages"
+    unpublishManyWorksConnection(
+        after: ID,
+        before: ID,
+        first: Int,
+        "Stages to unpublish documents from"
+        from: [Stage!]! = [PUBLISHED],
+        last: Int,
+        "Locales to unpublish"
+        locales: [Locale!],
+        skip: Int,
+        "Stage to find matching documents in"
+        stage: Stage = DRAFT,
+        "Whether to unpublish the base document and default localization"
+        unpublishBase: Boolean = true,
+        "Identifies documents in draft stage"
+        where: WorkManyWhereInput
+    ): WorkConnection!
+    "Unpublish one repository from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only."
+    unpublishRepository(
+        "Stages to unpublish document from"
+        from: [Stage!]! = [PUBLISHED],
+        "Optional locales to unpublish. Unpublishing the default locale will completely remove the document from the selected stages"
+        locales: [Locale!],
+        "Unpublish complete document including default localization and relations from stages. Can be disabled."
+        unpublishBase: Boolean = true,
+        "Document to unpublish"
+        where: RepositoryWhereUniqueInput!
+    ): Repository
+    "Unpublish one work from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only."
+    unpublishWork(
+        "Stages to unpublish document from"
+        from: [Stage!]! = [PUBLISHED],
+        "Optional locales to unpublish. Unpublishing the default locale will completely remove the document from the selected stages"
+        locales: [Locale!],
+        "Unpublish complete document including default localization and relations from stages. Can be disabled."
+        unpublishBase: Boolean = true,
+        "Document to unpublish"
+        where: WorkWhereUniqueInput!
+    ): Work
+    "Update one asset"
+    updateAsset(data: AssetUpdateInput!, where: AssetWhereUniqueInput!): Asset
+    "Update one fotoLog"
+    updateFotoLog(data: FotoLogUpdateInput!, where: FotoLogWhereUniqueInput!): FotoLog
+    "Update one log"
+    updateLog(data: LogUpdateInput!, where: LogWhereUniqueInput!): Log
+    "Update many assets"
+    updateManyAssets(
+        "Updates to document content"
+        data: AssetUpdateManyInput!,
+        "Documents to apply update on"
+        where: AssetManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (updateManyAssetsConnection)")
+    "Update many Asset documents"
+    updateManyAssetsConnection(
+        after: ID,
+        before: ID,
+        "Updates to document content"
+        data: AssetUpdateManyInput!,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to apply update on"
+        where: AssetManyWhereInput
+    ): AssetConnection!
+    "Update many fotoLogs"
+    updateManyFotoLogs(
+        "Updates to document content"
+        data: FotoLogUpdateManyInput!,
+        "Documents to apply update on"
+        where: FotoLogManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (updateManyFotoLogsConnection)")
+    "Update many FotoLog documents"
+    updateManyFotoLogsConnection(
+        after: ID,
+        before: ID,
+        "Updates to document content"
+        data: FotoLogUpdateManyInput!,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to apply update on"
+        where: FotoLogManyWhereInput
+    ): FotoLogConnection!
+    "Update many logs"
+    updateManyLogs(
+        "Updates to document content"
+        data: LogUpdateManyInput!,
+        "Documents to apply update on"
+        where: LogManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (updateManyLogsConnection)")
+    "Update many Log documents"
+    updateManyLogsConnection(
+        after: ID,
+        before: ID,
+        "Updates to document content"
+        data: LogUpdateManyInput!,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to apply update on"
+        where: LogManyWhereInput
+    ): LogConnection!
+    "Update many repositories"
+    updateManyRepositories(
+        "Updates to document content"
+        data: RepositoryUpdateManyInput!,
+        "Documents to apply update on"
+        where: RepositoryManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (updateManyRepositoriesConnection)")
+    "Update many Repository documents"
+    updateManyRepositoriesConnection(
+        after: ID,
+        before: ID,
+        "Updates to document content"
+        data: RepositoryUpdateManyInput!,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to apply update on"
+        where: RepositoryManyWhereInput
+    ): RepositoryConnection!
+    "Update many works"
+    updateManyWorks(
+        "Updates to document content"
+        data: WorkUpdateManyInput!,
+        "Documents to apply update on"
+        where: WorkManyWhereInput
+    ): BatchPayload! @deprecated(reason : "Please use the new paginated many mutation (updateManyWorksConnection)")
+    "Update many Work documents"
+    updateManyWorksConnection(
+        after: ID,
+        before: ID,
+        "Updates to document content"
+        data: WorkUpdateManyInput!,
+        first: Int,
+        last: Int,
+        skip: Int,
+        "Documents to apply update on"
+        where: WorkManyWhereInput
+    ): WorkConnection!
+    "Update one repository"
+    updateRepository(data: RepositoryUpdateInput!, where: RepositoryWhereUniqueInput!): Repository
+    "Update one work"
+    updateWork(data: WorkUpdateInput!, where: WorkWhereUniqueInput!): Work
+    "Upsert one asset"
+    upsertAsset(upsert: AssetUpsertInput!, where: AssetWhereUniqueInput!): Asset
+    "Upsert one fotoLog"
+    upsertFotoLog(upsert: FotoLogUpsertInput!, where: FotoLogWhereUniqueInput!): FotoLog
+    "Upsert one log"
+    upsertLog(upsert: LogUpsertInput!, where: LogWhereUniqueInput!): Log
+    "Upsert one repository"
+    upsertRepository(upsert: RepositoryUpsertInput!, where: RepositoryWhereUniqueInput!): Repository
+    "Upsert one work"
+    upsertWork(upsert: WorkUpsertInput!, where: WorkWhereUniqueInput!): Work
+}
+
+"Information about pagination in a connection."
+type PageInfo {
+    "When paginating forwards, the cursor to continue."
+    endCursor: String
+    "When paginating forwards, are there more items?"
+    hasNextPage: Boolean!
+    "When paginating backwards, are there more items?"
+    hasPreviousPage: Boolean!
+    "Number of items in the current page."
+    pageSize: Int
+    "When paginating backwards, the cursor to continue."
+    startCursor: String
+}
+
+type Query {
+    "Retrieve a single asset"
+    asset(
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Asset` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        stage: Stage! = PUBLISHED,
+        where: AssetWhereUniqueInput!
+    ): Asset
+    "Retrieve document version"
+    assetVersion(where: VersionWhereInput!): DocumentVersion
+    "Retrieve multiple assets"
+    assets(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Asset` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: AssetOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: AssetWhereInput
+    ): [Asset!]!
+    "Retrieve multiple assets using the Relay connection interface"
+    assetsConnection(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Asset` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: AssetOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: AssetWhereInput
+    ): AssetConnection!
+    "Retrieve a single fotoLog"
+    fotoLog(
+        """
+
+        Defines which locales should be returned.
+
+        Note that `FotoLog` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        stage: Stage! = PUBLISHED,
+        where: FotoLogWhereUniqueInput!
+    ): FotoLog
+    "Retrieve document version"
+    fotoLogVersion(where: VersionWhereInput!): DocumentVersion
+    "Retrieve multiple fotoLogs"
+    fotoLogs(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `FotoLog` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: FotoLogOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: FotoLogWhereInput
+    ): [FotoLog!]!
+    "Retrieve multiple fotoLogs using the Relay connection interface"
+    fotoLogsConnection(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `FotoLog` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: FotoLogOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: FotoLogWhereInput
+    ): FotoLogConnection!
+    "Retrieve a single log"
+    log(
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Log` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        stage: Stage! = PUBLISHED,
+        where: LogWhereUniqueInput!
+    ): Log
+    "Retrieve document version"
+    logVersion(where: VersionWhereInput!): DocumentVersion
+    "Retrieve multiple logs"
+    logs(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Log` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: LogOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: LogWhereInput
+    ): [Log!]!
+    "Retrieve multiple logs using the Relay connection interface"
+    logsConnection(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Log` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: LogOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: LogWhereInput
+    ): LogConnection!
+    "Fetches an object given its ID"
+    node(
+        "The ID of an object"
+        id: ID!,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Node` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        stage: Stage! = PUBLISHED
+    ): Node
+    "Retrieve multiple repositories"
+    repositories(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Repository` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: RepositoryOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: RepositoryWhereInput
+    ): [Repository!]!
+    "Retrieve multiple repositories using the Relay connection interface"
+    repositoriesConnection(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Repository` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: RepositoryOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: RepositoryWhereInput
+    ): RepositoryConnection!
+    "Retrieve a single repository"
+    repository(
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Repository` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        stage: Stage! = PUBLISHED,
+        where: RepositoryWhereUniqueInput!
+    ): Repository
+    "Retrieve document version"
+    repositoryVersion(where: VersionWhereInput!): DocumentVersion
+    "Retrieve a single work"
+    work(
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Work` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        stage: Stage! = PUBLISHED,
+        where: WorkWhereUniqueInput!
+    ): Work
+    "Retrieve document version"
+    workVersion(where: VersionWhereInput!): DocumentVersion
+    "Retrieve multiple works"
+    works(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Work` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: WorkOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: WorkWhereInput
+    ): [Work!]!
+    "Retrieve multiple works using the Relay connection interface"
+    worksConnection(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Defines which locales should be returned.
+
+        Note that `Work` will be affected directly by this argument, as well as any other related models with localized fields in the query's subtree.
+        The first locale matching the provided list will be returned, entries with non matching locales will be filtered out.
+
+        This argument may be overwritten by another locales definition in a relational child field, this will effectively use the overwritten argument for the affected query's subtree.
+        """
+        locales: [Locale!]! = [en],
+        orderBy: WorkOrderByInput,
+        skip: Int,
+        stage: Stage! = PUBLISHED,
+        where: WorkWhereInput
+    ): WorkConnection!
+}
+
+"Representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba()"
+type RGBA {
+    a: RGBATransparency!
+    b: RGBAHue!
+    g: RGBAHue!
+    r: RGBAHue!
+}
+
+type Repository implements Node {
+    "The time the document was created"
+    createdAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    "Get the document in other stages"
+    documentInStages(
+        "Decides if the current stage should be included or not"
+        includeCurrent: Boolean! = false,
+        "Decides if the documents should match the parent documents locale or should use the fallback order defined in the tree"
+        inheritLocale: Boolean! = false,
+        "Potential stages that should be returned"
+        stages: [Stage!]! = [PUBLISHED, DRAFT]
+    ): [Repository!]!
+    "List of Repository versions"
+    history(
+        limit: Int! = 10,
+        skip: Int! = 0,
+        "This is optional and can be used to fetch the document version history for a specific stage instead of the current one"
+        stageOverride: Stage
+    ): [Version!]!
+    "The unique identifier"
+    id: ID!
+    "System Locale field"
+    locale: Locale!
+    "Get the other localizations for this document"
+    localizations(
+        "Decides if the current locale should be included or not"
+        includeCurrent: Boolean! = false,
+        "Potential locales that should be returned"
+        locales: [Locale!]! = [en, es_MX]
+    ): [Repository!]!
+    "The time the document was published. Null on documents in draft stage."
+    publishedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime
+    repositoryHost: RepositoryHosts!
+    "System stage field"
+    stage: Stage!
+    title: String!
+    "The time the document was updated"
+    updatedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    url: String!
+    works(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `works` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!],
+        orderBy: WorkOrderByInput,
+        skip: Int,
+        where: WorkWhereInput
+    ): [Work!]!
+}
+
+"A connection to a list of items."
+type RepositoryConnection {
+    aggregate: Aggregate!
+    "A list of edges."
+    edges: [RepositoryEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type RepositoryEdge {
+    "A cursor for use in pagination."
+    cursor: String!
+    "The item at the end of the edge."
+    node: Repository!
+}
+
+"Custom type representing a rich text value comprising of raw rich text ast, html, markdown and text values"
+type RichText {
+    "Returns HTMl representation"
+    html: String!
+    "Returns Markdown representation"
+    markdown: String!
+    "Returns AST representation"
+    raw: RichTextAST!
+    "Returns plain-text contents of RichText"
+    text: String!
+}
+
+type Version {
+    createdAt: DateTime!
+    id: ID!
+    revision: Int!
+    stage: Stage!
+}
+
+type Work implements Node {
+    categories: [WorkCategory!]!
+    "The time the document was created"
+    createdAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+    "Get the document in other stages"
+    documentInStages(
+        "Decides if the current stage should be included or not"
+        includeCurrent: Boolean! = false,
+        "Decides if the documents should match the parent documents locale or should use the fallback order defined in the tree"
+        inheritLocale: Boolean! = false,
+        "Potential stages that should be returned"
+        stages: [Stage!]! = [PUBLISHED, DRAFT]
+    ): [Work!]!
+    hero(
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `hero` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!]
+    ): Asset!
+    "List of Work versions"
+    history(
+        limit: Int! = 10,
+        skip: Int! = 0,
+        "This is optional and can be used to fetch the document version history for a specific stage instead of the current one"
+        stageOverride: Stage
+    ): [Version!]!
+    "The unique identifier"
+    id: ID!
+    "System Locale field"
+    locale: Locale!
+    "Get the other localizations for this document"
+    localizations(
+        "Decides if the current locale should be included or not"
+        includeCurrent: Boolean! = false,
+        "Potential locales that should be returned"
+        locales: [Locale!]! = [en, es_MX]
+    ): [Work!]!
+    markdown: [String!]!
+    "The time the document was published. Null on documents in draft stage."
+    publishedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime
+    repositories(
+        after: String,
+        before: String,
+        first: Int,
+        last: Int,
+        """
+
+        Allows to optionally override locale filtering behaviour in the query's subtree.
+
+        Note that `repositories` is a model without localized fields and will not be affected directly by this argument, however the locales will be passed on to any relational fields in the query's subtree for filtering.
+        For related models with localized fields in the query's subtree, the first locale matching the provided list of locales will be returned, entries with non matching locales will be filtered out.
+
+        This argument will overwrite any existing locale filtering defined in the query's tree for the subtree.
+        """
+        locales: [Locale!],
+        orderBy: RepositoryOrderByInput,
+        skip: Int,
+        where: RepositoryWhereInput
+    ): [Repository!]!
+    slug: String!
+    "System stage field"
+    stage: Stage!
+    summary: String!
+    title: String!
+    "The time the document was updated"
+    updatedAt(
+        "Variation of DateTime field to return, allows value from base document, current localization, or combined by returning the newer value of both"
+        variation: SystemDateTimeFieldVariation! = COMBINED
+    ): DateTime!
+}
+
+"A connection to a list of items."
+type WorkConnection {
+    aggregate: Aggregate!
+    "A list of edges."
+    edges: [WorkEdge!]!
+    "Information to aid in pagination."
+    pageInfo: PageInfo!
+}
+
+"An edge in a connection."
+type WorkEdge {
+    "A cursor for use in pagination."
+    cursor: String!
+    "The item at the end of the edge."
+    node: Work!
+}
+
+enum AssetOrderByInput {
+    createdAt_ASC
+    createdAt_DESC
+    fileName_ASC
+    fileName_DESC
+    handle_ASC
+    handle_DESC
+    height_ASC
+    height_DESC
+    id_ASC
+    id_DESC
+    mimeType_ASC
+    mimeType_DESC
+    publishedAt_ASC
+    publishedAt_DESC
+    size_ASC
+    size_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+    width_ASC
+    width_DESC
+}
+
+enum DocumentFileTypes {
+    doc
+    docx
+    html
+    jpg
+    odp
+    ods
+    odt
+    pdf
+    png
+    ppt
+    pptx
+    svg
+    txt
+    webp
+    xls
+    xlsx
+}
+
+enum FotoLogOrderByInput {
+    createdAt_ASC
+    createdAt_DESC
+    id_ASC
+    id_DESC
+    markdown_ASC
+    markdown_DESC
+    publishedAt_ASC
+    publishedAt_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+}
+
+enum ImageFit {
+    "Resizes the image to fit within the specified parameters without distorting, cropping, or changing the aspect ratio."
+    clip
+    "Resizes the image to fit the specified parameters exactly by removing any parts of the image that don't fit within the boundaries."
+    crop
+    "Resizes the image to fit within the parameters, but as opposed to 'fit:clip' will not scale the image if the image is smaller than the output size."
+    max
+    "Resizes the image to fit the specified parameters exactly by scaling the image to the desired size. The aspect ratio of the image is not respected and the image can be distorted using this method."
+    scale
+}
+
+"Locale system enumeration"
+enum Locale {
+    "System locale"
+    en
+    es_MX
+}
+
+enum LogOrderByInput {
+    createdAt_ASC
+    createdAt_DESC
+    id_ASC
+    id_DESC
+    markdown_ASC
+    markdown_DESC
+    publishedAt_ASC
+    publishedAt_DESC
+    slug_ASC
+    slug_DESC
+    summary_ASC
+    summary_DESC
+    title_ASC
+    title_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+}
+
+enum RepositoryHosts {
+    bitbucket
+    figma
+    github
+    gitlab
+}
+
+enum RepositoryOrderByInput {
+    createdAt_ASC
+    createdAt_DESC
+    id_ASC
+    id_DESC
+    publishedAt_ASC
+    publishedAt_DESC
+    repositoryHost_ASC
+    repositoryHost_DESC
+    title_ASC
+    title_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+    url_ASC
+    url_DESC
+}
+
+"Stage system enumeration"
+enum Stage {
+    "The Draft is the default stage for all your content."
+    DRAFT
+    "The Published stage is where you can publish your content to."
+    PUBLISHED
+}
+
+enum SystemDateTimeFieldVariation {
+    BASE
+    COMBINED
+    LOCALIZATION
+}
+
+"System User Kind"
+enum UserKind {
+    MEMBER
+    PAT
+    PUBLIC
+    WEBHOOK
+}
+
+enum WorkCategory {
+    branding
+    interface_design
+    media_production
+    print_design
+    programming
+}
+
+enum WorkOrderByInput {
+    categories_ASC
+    categories_DESC
+    createdAt_ASC
+    createdAt_DESC
+    id_ASC
+    id_DESC
+    markdown_ASC
+    markdown_DESC
+    publishedAt_ASC
+    publishedAt_DESC
+    slug_ASC
+    slug_DESC
+    summary_ASC
+    summary_DESC
+    title_ASC
+    title_DESC
+    updatedAt_ASC
+    updatedAt_DESC
+}
+
+enum _FilterKind {
+    AND
+    NOT
+    OR
+    contains
+    contains_all
+    contains_none
+    contains_some
+    ends_with
+    eq
+    eq_not
+    gt
+    gte
+    in
+    lt
+    lte
+    not_contains
+    not_ends_with
+    not_in
+    not_starts_with
+    relational_every
+    relational_none
+    relational_single
+    relational_some
+    search
+    starts_with
+}
+
+enum _MutationInputFieldKind {
+    enum
+    relation
+    richText
+    scalar
+    union
+    virtual
+}
+
+enum _MutationKind {
+    create
+    delete
+    deleteMany
+    publish
+    publishMany
+    unpublish
+    unpublishMany
+    update
+    updateMany
+    upsert
+}
+
+enum _OrderDirection {
+    asc
+    desc
+}
+
+enum _RelationInputCardinality {
+    many
+    one
+}
+
+enum _RelationInputKind {
+    create
+    update
+}
+
+enum _RelationKind {
+    regular
+    union
+}
+
+enum _SystemDateTimeFieldVariation {
+    base
+    combined
+    localization
+}
+
+input AssetConnectInput {
+    "Allow to specify document position in list of connected documents, will default to appending at end of list"
+    position: ConnectPositionInput
+    "Document to connect"
+    where: AssetWhereUniqueInput!
+}
+
+input AssetCreateInput {
+    createdAt: DateTime
+    fileName: String!
+    handle: String!
+    height: Float
+    "Inline mutations for managing document localizations excluding the default locale"
+    localizations: AssetCreateLocalizationsInput
+    logHero: LogCreateManyInlineInput
+    mimeType: String
+    photosFotoLog: FotoLogCreateManyInlineInput
+    size: Float
+    updatedAt: DateTime
+    width: Float
+    workHero: WorkCreateManyInlineInput
+}
+
+input AssetCreateLocalizationDataInput {
+    createdAt: DateTime
+    fileName: String!
+    handle: String!
+    height: Float
+    mimeType: String
+    size: Float
+    updatedAt: DateTime
+    width: Float
+}
+
+input AssetCreateLocalizationInput {
+    "Localization input"
+    data: AssetCreateLocalizationDataInput!
+    locale: Locale!
+}
+
+input AssetCreateLocalizationsInput {
+    "Create localizations for the newly-created document"
+    create: [AssetCreateLocalizationInput!]
+}
+
+input AssetCreateManyInlineInput {
+    "Connect multiple existing Asset documents"
+    connect: [AssetWhereUniqueInput!]
+    "Create and connect multiple existing Asset documents"
+    create: [AssetCreateInput!]
+}
+
+input AssetCreateOneInlineInput {
+    "Connect one existing Asset document"
+    connect: AssetWhereUniqueInput
+    "Create and connect one Asset document"
+    create: AssetCreateInput
+}
+
+"Identifies documents"
+input AssetManyWhereInput {
+    "Logical AND on all given filters."
+    AND: [AssetWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [AssetWhereInput!]
+    "Logical OR on all given filters."
+    OR: [AssetWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    logHero_every: LogWhereInput
+    logHero_none: LogWhereInput
+    logHero_some: LogWhereInput
+    photosFotoLog_every: FotoLogWhereInput
+    photosFotoLog_none: FotoLogWhereInput
+    photosFotoLog_some: FotoLogWhereInput
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+    workHero_every: WorkWhereInput
+    workHero_none: WorkWhereInput
+    workHero_some: WorkWhereInput
+}
+
+"Transformations for Assets"
+input AssetTransformationInput {
+    document: DocumentTransformationInput
+    image: ImageTransformationInput
+    "Pass true if you want to validate the passed transformation parameters"
+    validateOptions: Boolean = false
+}
+
+input AssetUpdateInput {
+    fileName: String
+    handle: String
+    height: Float
+    "Manage document localizations"
+    localizations: AssetUpdateLocalizationsInput
+    logHero: LogUpdateManyInlineInput
+    mimeType: String
+    photosFotoLog: FotoLogUpdateManyInlineInput
+    size: Float
+    width: Float
+    workHero: WorkUpdateManyInlineInput
+}
+
+input AssetUpdateLocalizationDataInput {
+    fileName: String
+    handle: String
+    height: Float
+    mimeType: String
+    size: Float
+    width: Float
+}
+
+input AssetUpdateLocalizationInput {
+    data: AssetUpdateLocalizationDataInput!
+    locale: Locale!
+}
+
+input AssetUpdateLocalizationsInput {
+    "Localizations to create"
+    create: [AssetCreateLocalizationInput!]
+    "Localizations to delete"
+    delete: [Locale!]
+    "Localizations to update"
+    update: [AssetUpdateLocalizationInput!]
+    upsert: [AssetUpsertLocalizationInput!]
+}
+
+input AssetUpdateManyInlineInput {
+    "Connect multiple existing Asset documents"
+    connect: [AssetConnectInput!]
+    "Create and connect multiple Asset documents"
+    create: [AssetCreateInput!]
+    "Delete multiple Asset documents"
+    delete: [AssetWhereUniqueInput!]
+    "Disconnect multiple Asset documents"
+    disconnect: [AssetWhereUniqueInput!]
+    "Override currently-connected documents with multiple existing Asset documents"
+    set: [AssetWhereUniqueInput!]
+    "Update multiple Asset documents"
+    update: [AssetUpdateWithNestedWhereUniqueInput!]
+    "Upsert multiple Asset documents"
+    upsert: [AssetUpsertWithNestedWhereUniqueInput!]
+}
+
+input AssetUpdateManyInput {
+    fileName: String
+    height: Float
+    "Optional updates to localizations"
+    localizations: AssetUpdateManyLocalizationsInput
+    mimeType: String
+    size: Float
+    width: Float
+}
+
+input AssetUpdateManyLocalizationDataInput {
+    fileName: String
+    height: Float
+    mimeType: String
+    size: Float
+    width: Float
+}
+
+input AssetUpdateManyLocalizationInput {
+    data: AssetUpdateManyLocalizationDataInput!
+    locale: Locale!
+}
+
+input AssetUpdateManyLocalizationsInput {
+    "Localizations to update"
+    update: [AssetUpdateManyLocalizationInput!]
+}
+
+input AssetUpdateManyWithNestedWhereInput {
+    "Update many input"
+    data: AssetUpdateManyInput!
+    "Document search"
+    where: AssetWhereInput!
+}
+
+input AssetUpdateOneInlineInput {
+    "Connect existing Asset document"
+    connect: AssetWhereUniqueInput
+    "Create and connect one Asset document"
+    create: AssetCreateInput
+    "Delete currently connected Asset document"
+    delete: Boolean
+    "Disconnect currently connected Asset document"
+    disconnect: Boolean
+    "Update single Asset document"
+    update: AssetUpdateWithNestedWhereUniqueInput
+    "Upsert single Asset document"
+    upsert: AssetUpsertWithNestedWhereUniqueInput
+}
+
+input AssetUpdateWithNestedWhereUniqueInput {
+    "Document to update"
+    data: AssetUpdateInput!
+    "Unique document search"
+    where: AssetWhereUniqueInput!
+}
+
+input AssetUpsertInput {
+    "Create document if it didn't exist"
+    create: AssetCreateInput!
+    "Update document if it exists"
+    update: AssetUpdateInput!
+}
+
+input AssetUpsertLocalizationInput {
+    create: AssetCreateLocalizationDataInput!
+    locale: Locale!
+    update: AssetUpdateLocalizationDataInput!
+}
+
+input AssetUpsertWithNestedWhereUniqueInput {
+    "Upsert data"
+    data: AssetUpsertInput!
+    "Unique document search"
+    where: AssetWhereUniqueInput!
+}
+
+"Identifies documents"
+input AssetWhereInput {
+    "Logical AND on all given filters."
+    AND: [AssetWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [AssetWhereInput!]
+    "Logical OR on all given filters."
+    OR: [AssetWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    fileName: String
+    "All values containing the given string."
+    fileName_contains: String
+    "All values ending with the given string."
+    fileName_ends_with: String
+    "All values that are contained in given list."
+    fileName_in: [String!]
+    "All values that are not equal to given value."
+    fileName_not: String
+    "All values not containing the given string."
+    fileName_not_contains: String
+    "All values not ending with the given string"
+    fileName_not_ends_with: String
+    "All values that are not contained in given list."
+    fileName_not_in: [String!]
+    "All values not starting with the given string."
+    fileName_not_starts_with: String
+    "All values starting with the given string."
+    fileName_starts_with: String
+    handle: String
+    "All values containing the given string."
+    handle_contains: String
+    "All values ending with the given string."
+    handle_ends_with: String
+    "All values that are contained in given list."
+    handle_in: [String!]
+    "All values that are not equal to given value."
+    handle_not: String
+    "All values not containing the given string."
+    handle_not_contains: String
+    "All values not ending with the given string"
+    handle_not_ends_with: String
+    "All values that are not contained in given list."
+    handle_not_in: [String!]
+    "All values not starting with the given string."
+    handle_not_starts_with: String
+    "All values starting with the given string."
+    handle_starts_with: String
+    height: Float
+    "All values greater than the given value."
+    height_gt: Float
+    "All values greater than or equal the given value."
+    height_gte: Float
+    "All values that are contained in given list."
+    height_in: [Float!]
+    "All values less than the given value."
+    height_lt: Float
+    "All values less than or equal the given value."
+    height_lte: Float
+    "All values that are not equal to given value."
+    height_not: Float
+    "All values that are not contained in given list."
+    height_not_in: [Float!]
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    logHero_every: LogWhereInput
+    logHero_none: LogWhereInput
+    logHero_some: LogWhereInput
+    mimeType: String
+    "All values containing the given string."
+    mimeType_contains: String
+    "All values ending with the given string."
+    mimeType_ends_with: String
+    "All values that are contained in given list."
+    mimeType_in: [String!]
+    "All values that are not equal to given value."
+    mimeType_not: String
+    "All values not containing the given string."
+    mimeType_not_contains: String
+    "All values not ending with the given string"
+    mimeType_not_ends_with: String
+    "All values that are not contained in given list."
+    mimeType_not_in: [String!]
+    "All values not starting with the given string."
+    mimeType_not_starts_with: String
+    "All values starting with the given string."
+    mimeType_starts_with: String
+    photosFotoLog_every: FotoLogWhereInput
+    photosFotoLog_none: FotoLogWhereInput
+    photosFotoLog_some: FotoLogWhereInput
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    size: Float
+    "All values greater than the given value."
+    size_gt: Float
+    "All values greater than or equal the given value."
+    size_gte: Float
+    "All values that are contained in given list."
+    size_in: [Float!]
+    "All values less than the given value."
+    size_lt: Float
+    "All values less than or equal the given value."
+    size_lte: Float
+    "All values that are not equal to given value."
+    size_not: Float
+    "All values that are not contained in given list."
+    size_not_in: [Float!]
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+    width: Float
+    "All values greater than the given value."
+    width_gt: Float
+    "All values greater than or equal the given value."
+    width_gte: Float
+    "All values that are contained in given list."
+    width_in: [Float!]
+    "All values less than the given value."
+    width_lt: Float
+    "All values less than or equal the given value."
+    width_lte: Float
+    "All values that are not equal to given value."
+    width_not: Float
+    "All values that are not contained in given list."
+    width_not_in: [Float!]
+    workHero_every: WorkWhereInput
+    workHero_none: WorkWhereInput
+    workHero_some: WorkWhereInput
+}
+
+"References Asset record uniquely"
+input AssetWhereUniqueInput {
+    id: ID
+}
+
+"Accepts either HEX or RGBA color value. At least one of hex or rgba value should be passed. If both are passed RGBA is used."
+input ColorInput {
+    hex: Hex
+    rgba: RGBAInput
+}
+
+input ConnectPositionInput {
+    "Connect document after specified document"
+    after: ID
+    "Connect document before specified document"
+    before: ID
+    "Connect document at last position"
+    end: Boolean
+    "Connect document at first position"
+    start: Boolean
+}
+
+input DocumentOutputInput {
+    """
+
+    Transforms a document into a desired file type.
+    See this matrix for format support:
+
+    PDF:    jpg, odp, ods, odt, png, svg, txt, and webp
+    DOC:    docx, html, jpg, odt, pdf, png, svg, txt, and webp
+    DOCX:    doc, html, jpg, odt, pdf, png, svg, txt, and webp
+    ODT:    doc, docx, html, jpg, pdf, png, svg, txt, and webp
+    XLS:    jpg, pdf, ods, png, svg, xlsx, and webp
+    XLSX:    jpg, pdf, ods, png, svg, xls, and webp
+    ODS:    jpg, pdf, png, xls, svg, xlsx, and webp
+    PPT:    jpg, odp, pdf, png, svg, pptx, and webp
+    PPTX:    jpg, odp, pdf, png, svg, ppt, and webp
+    ODP:    jpg, pdf, png, ppt, svg, pptx, and webp
+    BMP:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    GIF:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    JPG:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    PNG:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    WEBP:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    TIFF:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    AI:        jpg, odp, ods, odt, pdf, png, svg, and webp
+    PSD:    jpg, odp, ods, odt, pdf, png, svg, and webp
+    SVG:    jpg, odp, ods, odt, pdf, png, and webp
+    HTML:    jpg, odt, pdf, svg, txt, and webp
+    TXT:    jpg, html, odt, pdf, svg, and webp
+    """
+    format: DocumentFileTypes
+}
+
+"Transformations for Documents"
+input DocumentTransformationInput {
+    "Changes the output for the file."
+    output: DocumentOutputInput
+}
+
+input FotoLogConnectInput {
+    "Allow to specify document position in list of connected documents, will default to appending at end of list"
+    position: ConnectPositionInput
+    "Document to connect"
+    where: FotoLogWhereUniqueInput!
+}
+
+input FotoLogCreateInput {
+    createdAt: DateTime
+    "Inline mutations for managing document localizations excluding the default locale"
+    localizations: FotoLogCreateLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+    photos: AssetCreateManyInlineInput!
+    updatedAt: DateTime
+}
+
+input FotoLogCreateLocalizationDataInput {
+    createdAt: DateTime
+    markdown: [String!]
+    updatedAt: DateTime
+}
+
+input FotoLogCreateLocalizationInput {
+    "Localization input"
+    data: FotoLogCreateLocalizationDataInput!
+    locale: Locale!
+}
+
+input FotoLogCreateLocalizationsInput {
+    "Create localizations for the newly-created document"
+    create: [FotoLogCreateLocalizationInput!]
+}
+
+input FotoLogCreateManyInlineInput {
+    "Connect multiple existing FotoLog documents"
+    connect: [FotoLogWhereUniqueInput!]
+    "Create and connect multiple existing FotoLog documents"
+    create: [FotoLogCreateInput!]
+}
+
+input FotoLogCreateOneInlineInput {
+    "Connect one existing FotoLog document"
+    connect: FotoLogWhereUniqueInput
+    "Create and connect one FotoLog document"
+    create: FotoLogCreateInput
+}
+
+"Identifies documents"
+input FotoLogManyWhereInput {
+    "Logical AND on all given filters."
+    AND: [FotoLogWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [FotoLogWhereInput!]
+    "Logical OR on all given filters."
+    OR: [FotoLogWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    photos_every: AssetWhereInput
+    photos_none: AssetWhereInput
+    photos_some: AssetWhereInput
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+}
+
+input FotoLogUpdateInput {
+    "Manage document localizations"
+    localizations: FotoLogUpdateLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+    photos: AssetUpdateManyInlineInput
+}
+
+input FotoLogUpdateLocalizationDataInput {
+    markdown: [String!]
+}
+
+input FotoLogUpdateLocalizationInput {
+    data: FotoLogUpdateLocalizationDataInput!
+    locale: Locale!
+}
+
+input FotoLogUpdateLocalizationsInput {
+    "Localizations to create"
+    create: [FotoLogCreateLocalizationInput!]
+    "Localizations to delete"
+    delete: [Locale!]
+    "Localizations to update"
+    update: [FotoLogUpdateLocalizationInput!]
+    upsert: [FotoLogUpsertLocalizationInput!]
+}
+
+input FotoLogUpdateManyInlineInput {
+    "Connect multiple existing FotoLog documents"
+    connect: [FotoLogConnectInput!]
+    "Create and connect multiple FotoLog documents"
+    create: [FotoLogCreateInput!]
+    "Delete multiple FotoLog documents"
+    delete: [FotoLogWhereUniqueInput!]
+    "Disconnect multiple FotoLog documents"
+    disconnect: [FotoLogWhereUniqueInput!]
+    "Override currently-connected documents with multiple existing FotoLog documents"
+    set: [FotoLogWhereUniqueInput!]
+    "Update multiple FotoLog documents"
+    update: [FotoLogUpdateWithNestedWhereUniqueInput!]
+    "Upsert multiple FotoLog documents"
+    upsert: [FotoLogUpsertWithNestedWhereUniqueInput!]
+}
+
+input FotoLogUpdateManyInput {
+    "Optional updates to localizations"
+    localizations: FotoLogUpdateManyLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+}
+
+input FotoLogUpdateManyLocalizationDataInput {
+    markdown: [String!]
+}
+
+input FotoLogUpdateManyLocalizationInput {
+    data: FotoLogUpdateManyLocalizationDataInput!
+    locale: Locale!
+}
+
+input FotoLogUpdateManyLocalizationsInput {
+    "Localizations to update"
+    update: [FotoLogUpdateManyLocalizationInput!]
+}
+
+input FotoLogUpdateManyWithNestedWhereInput {
+    "Update many input"
+    data: FotoLogUpdateManyInput!
+    "Document search"
+    where: FotoLogWhereInput!
+}
+
+input FotoLogUpdateOneInlineInput {
+    "Connect existing FotoLog document"
+    connect: FotoLogWhereUniqueInput
+    "Create and connect one FotoLog document"
+    create: FotoLogCreateInput
+    "Delete currently connected FotoLog document"
+    delete: Boolean
+    "Disconnect currently connected FotoLog document"
+    disconnect: Boolean
+    "Update single FotoLog document"
+    update: FotoLogUpdateWithNestedWhereUniqueInput
+    "Upsert single FotoLog document"
+    upsert: FotoLogUpsertWithNestedWhereUniqueInput
+}
+
+input FotoLogUpdateWithNestedWhereUniqueInput {
+    "Document to update"
+    data: FotoLogUpdateInput!
+    "Unique document search"
+    where: FotoLogWhereUniqueInput!
+}
+
+input FotoLogUpsertInput {
+    "Create document if it didn't exist"
+    create: FotoLogCreateInput!
+    "Update document if it exists"
+    update: FotoLogUpdateInput!
+}
+
+input FotoLogUpsertLocalizationInput {
+    create: FotoLogCreateLocalizationDataInput!
+    locale: Locale!
+    update: FotoLogUpdateLocalizationDataInput!
+}
+
+input FotoLogUpsertWithNestedWhereUniqueInput {
+    "Upsert data"
+    data: FotoLogUpsertInput!
+    "Unique document search"
+    where: FotoLogWhereUniqueInput!
+}
+
+"Identifies documents"
+input FotoLogWhereInput {
+    "Logical AND on all given filters."
+    AND: [FotoLogWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [FotoLogWhereInput!]
+    "Logical OR on all given filters."
+    OR: [FotoLogWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    "Matches if the field array contains *all* items provided to the filter and order does match"
+    markdown: [String!]
+    "Matches if the field array contains *all* items provided to the filter"
+    markdown_contains_all: [String!]
+    "Matches if the field array does not contain any of the items provided to the filter"
+    markdown_contains_none: [String!]
+    "Matches if the field array contains at least one item provided to the filter"
+    markdown_contains_some: [String!]
+    "Matches if the field array does not contains *all* items provided to the filter or order does not match"
+    markdown_not: [String!]
+    photos_every: AssetWhereInput
+    photos_none: AssetWhereInput
+    photos_some: AssetWhereInput
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+}
+
+"References FotoLog record uniquely"
+input FotoLogWhereUniqueInput {
+    id: ID
+}
+
+input ImageResizeInput {
+    "The default value for the fit parameter is fit:clip."
+    fit: ImageFit
+    "The height in pixels to resize the image to. The value must be an integer from 1 to 10000."
+    height: Int
+    "The width in pixels to resize the image to. The value must be an integer from 1 to 10000."
+    width: Int
+}
+
+"Transformations for Images"
+input ImageTransformationInput {
+    "Resizes the image"
+    resize: ImageResizeInput
+}
+
+"Input for a geolocation point with latitude and longitude"
+input LocationInput {
+    latitude: Float!
+    longitude: Float!
+}
+
+input LogConnectInput {
+    "Allow to specify document position in list of connected documents, will default to appending at end of list"
+    position: ConnectPositionInput
+    "Document to connect"
+    where: LogWhereUniqueInput!
+}
+
+input LogCreateInput {
+    createdAt: DateTime
+    hero: AssetCreateOneInlineInput!
+    "Inline mutations for managing document localizations excluding the default locale"
+    localizations: LogCreateLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]!
+    slug: String!
+    "summary input for default locale (en)"
+    summary: String!
+    "title input for default locale (en)"
+    title: String!
+    updatedAt: DateTime
+}
+
+input LogCreateLocalizationDataInput {
+    createdAt: DateTime
+    markdown: [String!]!
+    summary: String!
+    title: String!
+    updatedAt: DateTime
+}
+
+input LogCreateLocalizationInput {
+    "Localization input"
+    data: LogCreateLocalizationDataInput!
+    locale: Locale!
+}
+
+input LogCreateLocalizationsInput {
+    "Create localizations for the newly-created document"
+    create: [LogCreateLocalizationInput!]
+}
+
+input LogCreateManyInlineInput {
+    "Connect multiple existing Log documents"
+    connect: [LogWhereUniqueInput!]
+    "Create and connect multiple existing Log documents"
+    create: [LogCreateInput!]
+}
+
+input LogCreateOneInlineInput {
+    "Connect one existing Log document"
+    connect: LogWhereUniqueInput
+    "Create and connect one Log document"
+    create: LogCreateInput
+}
+
+"Identifies documents"
+input LogManyWhereInput {
+    "Logical AND on all given filters."
+    AND: [LogWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [LogWhereInput!]
+    "Logical OR on all given filters."
+    OR: [LogWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    hero: AssetWhereInput
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    slug: String
+    "All values containing the given string."
+    slug_contains: String
+    "All values ending with the given string."
+    slug_ends_with: String
+    "All values that are contained in given list."
+    slug_in: [String!]
+    "All values that are not equal to given value."
+    slug_not: String
+    "All values not containing the given string."
+    slug_not_contains: String
+    "All values not ending with the given string"
+    slug_not_ends_with: String
+    "All values that are not contained in given list."
+    slug_not_in: [String!]
+    "All values not starting with the given string."
+    slug_not_starts_with: String
+    "All values starting with the given string."
+    slug_starts_with: String
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+}
+
+input LogUpdateInput {
+    hero: AssetUpdateOneInlineInput
+    "Manage document localizations"
+    localizations: LogUpdateLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+    slug: String
+    "summary input for default locale (en)"
+    summary: String
+    "title input for default locale (en)"
+    title: String
+}
+
+input LogUpdateLocalizationDataInput {
+    markdown: [String!]
+    summary: String
+    title: String
+}
+
+input LogUpdateLocalizationInput {
+    data: LogUpdateLocalizationDataInput!
+    locale: Locale!
+}
+
+input LogUpdateLocalizationsInput {
+    "Localizations to create"
+    create: [LogCreateLocalizationInput!]
+    "Localizations to delete"
+    delete: [Locale!]
+    "Localizations to update"
+    update: [LogUpdateLocalizationInput!]
+    upsert: [LogUpsertLocalizationInput!]
+}
+
+input LogUpdateManyInlineInput {
+    "Connect multiple existing Log documents"
+    connect: [LogConnectInput!]
+    "Create and connect multiple Log documents"
+    create: [LogCreateInput!]
+    "Delete multiple Log documents"
+    delete: [LogWhereUniqueInput!]
+    "Disconnect multiple Log documents"
+    disconnect: [LogWhereUniqueInput!]
+    "Override currently-connected documents with multiple existing Log documents"
+    set: [LogWhereUniqueInput!]
+    "Update multiple Log documents"
+    update: [LogUpdateWithNestedWhereUniqueInput!]
+    "Upsert multiple Log documents"
+    upsert: [LogUpsertWithNestedWhereUniqueInput!]
+}
+
+input LogUpdateManyInput {
+    "Optional updates to localizations"
+    localizations: LogUpdateManyLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+    "summary input for default locale (en)"
+    summary: String
+    "title input for default locale (en)"
+    title: String
+}
+
+input LogUpdateManyLocalizationDataInput {
+    markdown: [String!]
+    summary: String
+    title: String
+}
+
+input LogUpdateManyLocalizationInput {
+    data: LogUpdateManyLocalizationDataInput!
+    locale: Locale!
+}
+
+input LogUpdateManyLocalizationsInput {
+    "Localizations to update"
+    update: [LogUpdateManyLocalizationInput!]
+}
+
+input LogUpdateManyWithNestedWhereInput {
+    "Update many input"
+    data: LogUpdateManyInput!
+    "Document search"
+    where: LogWhereInput!
+}
+
+input LogUpdateOneInlineInput {
+    "Connect existing Log document"
+    connect: LogWhereUniqueInput
+    "Create and connect one Log document"
+    create: LogCreateInput
+    "Delete currently connected Log document"
+    delete: Boolean
+    "Disconnect currently connected Log document"
+    disconnect: Boolean
+    "Update single Log document"
+    update: LogUpdateWithNestedWhereUniqueInput
+    "Upsert single Log document"
+    upsert: LogUpsertWithNestedWhereUniqueInput
+}
+
+input LogUpdateWithNestedWhereUniqueInput {
+    "Document to update"
+    data: LogUpdateInput!
+    "Unique document search"
+    where: LogWhereUniqueInput!
+}
+
+input LogUpsertInput {
+    "Create document if it didn't exist"
+    create: LogCreateInput!
+    "Update document if it exists"
+    update: LogUpdateInput!
+}
+
+input LogUpsertLocalizationInput {
+    create: LogCreateLocalizationDataInput!
+    locale: Locale!
+    update: LogUpdateLocalizationDataInput!
+}
+
+input LogUpsertWithNestedWhereUniqueInput {
+    "Upsert data"
+    data: LogUpsertInput!
+    "Unique document search"
+    where: LogWhereUniqueInput!
+}
+
+"Identifies documents"
+input LogWhereInput {
+    "Logical AND on all given filters."
+    AND: [LogWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [LogWhereInput!]
+    "Logical OR on all given filters."
+    OR: [LogWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    hero: AssetWhereInput
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    "Matches if the field array contains *all* items provided to the filter and order does match"
+    markdown: [String!]
+    "Matches if the field array contains *all* items provided to the filter"
+    markdown_contains_all: [String!]
+    "Matches if the field array does not contain any of the items provided to the filter"
+    markdown_contains_none: [String!]
+    "Matches if the field array contains at least one item provided to the filter"
+    markdown_contains_some: [String!]
+    "Matches if the field array does not contains *all* items provided to the filter or order does not match"
+    markdown_not: [String!]
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    slug: String
+    "All values containing the given string."
+    slug_contains: String
+    "All values ending with the given string."
+    slug_ends_with: String
+    "All values that are contained in given list."
+    slug_in: [String!]
+    "All values that are not equal to given value."
+    slug_not: String
+    "All values not containing the given string."
+    slug_not_contains: String
+    "All values not ending with the given string"
+    slug_not_ends_with: String
+    "All values that are not contained in given list."
+    slug_not_in: [String!]
+    "All values not starting with the given string."
+    slug_not_starts_with: String
+    "All values starting with the given string."
+    slug_starts_with: String
+    summary: String
+    "All values containing the given string."
+    summary_contains: String
+    "All values ending with the given string."
+    summary_ends_with: String
+    "All values that are contained in given list."
+    summary_in: [String!]
+    "All values that are not equal to given value."
+    summary_not: String
+    "All values not containing the given string."
+    summary_not_contains: String
+    "All values not ending with the given string"
+    summary_not_ends_with: String
+    "All values that are not contained in given list."
+    summary_not_in: [String!]
+    "All values not starting with the given string."
+    summary_not_starts_with: String
+    "All values starting with the given string."
+    summary_starts_with: String
+    title: String
+    "All values containing the given string."
+    title_contains: String
+    "All values ending with the given string."
+    title_ends_with: String
+    "All values that are contained in given list."
+    title_in: [String!]
+    "All values that are not equal to given value."
+    title_not: String
+    "All values not containing the given string."
+    title_not_contains: String
+    "All values not ending with the given string"
+    title_not_ends_with: String
+    "All values that are not contained in given list."
+    title_not_in: [String!]
+    "All values not starting with the given string."
+    title_not_starts_with: String
+    "All values starting with the given string."
+    title_starts_with: String
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+}
+
+"References Log record uniquely"
+input LogWhereUniqueInput {
+    id: ID
+    slug: String
+}
+
+input PublishLocaleInput {
+    "Locales to publish"
+    locale: Locale!
+    "Stages to publish selected locales to"
+    stages: [Stage!]!
+}
+
+"Input type representing a RGBA color value: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#rgb()_and_rgba()"
+input RGBAInput {
+    a: RGBATransparency!
+    b: RGBAHue!
+    g: RGBAHue!
+    r: RGBAHue!
+}
+
+input RepositoryConnectInput {
+    "Allow to specify document position in list of connected documents, will default to appending at end of list"
+    position: ConnectPositionInput
+    "Document to connect"
+    where: RepositoryWhereUniqueInput!
+}
+
+input RepositoryCreateInput {
+    createdAt: DateTime
+    "Inline mutations for managing document localizations excluding the default locale"
+    localizations: RepositoryCreateLocalizationsInput
+    repositoryHost: RepositoryHosts!
+    "title input for default locale (en)"
+    title: String!
+    updatedAt: DateTime
+    url: String!
+    works: WorkCreateManyInlineInput
+}
+
+input RepositoryCreateLocalizationDataInput {
+    createdAt: DateTime
+    title: String!
+    updatedAt: DateTime
+}
+
+input RepositoryCreateLocalizationInput {
+    "Localization input"
+    data: RepositoryCreateLocalizationDataInput!
+    locale: Locale!
+}
+
+input RepositoryCreateLocalizationsInput {
+    "Create localizations for the newly-created document"
+    create: [RepositoryCreateLocalizationInput!]
+}
+
+input RepositoryCreateManyInlineInput {
+    "Connect multiple existing Repository documents"
+    connect: [RepositoryWhereUniqueInput!]
+    "Create and connect multiple existing Repository documents"
+    create: [RepositoryCreateInput!]
+}
+
+input RepositoryCreateOneInlineInput {
+    "Connect one existing Repository document"
+    connect: RepositoryWhereUniqueInput
+    "Create and connect one Repository document"
+    create: RepositoryCreateInput
+}
+
+"Identifies documents"
+input RepositoryManyWhereInput {
+    "Logical AND on all given filters."
+    AND: [RepositoryWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [RepositoryWhereInput!]
+    "Logical OR on all given filters."
+    OR: [RepositoryWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    repositoryHost: RepositoryHosts
+    "All values that are contained in given list."
+    repositoryHost_in: [RepositoryHosts!]
+    "All values that are not equal to given value."
+    repositoryHost_not: RepositoryHosts
+    "All values that are not contained in given list."
+    repositoryHost_not_in: [RepositoryHosts!]
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+    url: String
+    "All values containing the given string."
+    url_contains: String
+    "All values ending with the given string."
+    url_ends_with: String
+    "All values that are contained in given list."
+    url_in: [String!]
+    "All values that are not equal to given value."
+    url_not: String
+    "All values not containing the given string."
+    url_not_contains: String
+    "All values not ending with the given string"
+    url_not_ends_with: String
+    "All values that are not contained in given list."
+    url_not_in: [String!]
+    "All values not starting with the given string."
+    url_not_starts_with: String
+    "All values starting with the given string."
+    url_starts_with: String
+    works_every: WorkWhereInput
+    works_none: WorkWhereInput
+    works_some: WorkWhereInput
+}
+
+input RepositoryUpdateInput {
+    "Manage document localizations"
+    localizations: RepositoryUpdateLocalizationsInput
+    repositoryHost: RepositoryHosts
+    "title input for default locale (en)"
+    title: String
+    url: String
+    works: WorkUpdateManyInlineInput
+}
+
+input RepositoryUpdateLocalizationDataInput {
+    title: String
+}
+
+input RepositoryUpdateLocalizationInput {
+    data: RepositoryUpdateLocalizationDataInput!
+    locale: Locale!
+}
+
+input RepositoryUpdateLocalizationsInput {
+    "Localizations to create"
+    create: [RepositoryCreateLocalizationInput!]
+    "Localizations to delete"
+    delete: [Locale!]
+    "Localizations to update"
+    update: [RepositoryUpdateLocalizationInput!]
+    upsert: [RepositoryUpsertLocalizationInput!]
+}
+
+input RepositoryUpdateManyInlineInput {
+    "Connect multiple existing Repository documents"
+    connect: [RepositoryConnectInput!]
+    "Create and connect multiple Repository documents"
+    create: [RepositoryCreateInput!]
+    "Delete multiple Repository documents"
+    delete: [RepositoryWhereUniqueInput!]
+    "Disconnect multiple Repository documents"
+    disconnect: [RepositoryWhereUniqueInput!]
+    "Override currently-connected documents with multiple existing Repository documents"
+    set: [RepositoryWhereUniqueInput!]
+    "Update multiple Repository documents"
+    update: [RepositoryUpdateWithNestedWhereUniqueInput!]
+    "Upsert multiple Repository documents"
+    upsert: [RepositoryUpsertWithNestedWhereUniqueInput!]
+}
+
+input RepositoryUpdateManyInput {
+    "Optional updates to localizations"
+    localizations: RepositoryUpdateManyLocalizationsInput
+    repositoryHost: RepositoryHosts
+    "title input for default locale (en)"
+    title: String
+    url: String
+}
+
+input RepositoryUpdateManyLocalizationDataInput {
+    title: String
+}
+
+input RepositoryUpdateManyLocalizationInput {
+    data: RepositoryUpdateManyLocalizationDataInput!
+    locale: Locale!
+}
+
+input RepositoryUpdateManyLocalizationsInput {
+    "Localizations to update"
+    update: [RepositoryUpdateManyLocalizationInput!]
+}
+
+input RepositoryUpdateManyWithNestedWhereInput {
+    "Update many input"
+    data: RepositoryUpdateManyInput!
+    "Document search"
+    where: RepositoryWhereInput!
+}
+
+input RepositoryUpdateOneInlineInput {
+    "Connect existing Repository document"
+    connect: RepositoryWhereUniqueInput
+    "Create and connect one Repository document"
+    create: RepositoryCreateInput
+    "Delete currently connected Repository document"
+    delete: Boolean
+    "Disconnect currently connected Repository document"
+    disconnect: Boolean
+    "Update single Repository document"
+    update: RepositoryUpdateWithNestedWhereUniqueInput
+    "Upsert single Repository document"
+    upsert: RepositoryUpsertWithNestedWhereUniqueInput
+}
+
+input RepositoryUpdateWithNestedWhereUniqueInput {
+    "Document to update"
+    data: RepositoryUpdateInput!
+    "Unique document search"
+    where: RepositoryWhereUniqueInput!
+}
+
+input RepositoryUpsertInput {
+    "Create document if it didn't exist"
+    create: RepositoryCreateInput!
+    "Update document if it exists"
+    update: RepositoryUpdateInput!
+}
+
+input RepositoryUpsertLocalizationInput {
+    create: RepositoryCreateLocalizationDataInput!
+    locale: Locale!
+    update: RepositoryUpdateLocalizationDataInput!
+}
+
+input RepositoryUpsertWithNestedWhereUniqueInput {
+    "Upsert data"
+    data: RepositoryUpsertInput!
+    "Unique document search"
+    where: RepositoryWhereUniqueInput!
+}
+
+"Identifies documents"
+input RepositoryWhereInput {
+    "Logical AND on all given filters."
+    AND: [RepositoryWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [RepositoryWhereInput!]
+    "Logical OR on all given filters."
+    OR: [RepositoryWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    repositoryHost: RepositoryHosts
+    "All values that are contained in given list."
+    repositoryHost_in: [RepositoryHosts!]
+    "All values that are not equal to given value."
+    repositoryHost_not: RepositoryHosts
+    "All values that are not contained in given list."
+    repositoryHost_not_in: [RepositoryHosts!]
+    title: String
+    "All values containing the given string."
+    title_contains: String
+    "All values ending with the given string."
+    title_ends_with: String
+    "All values that are contained in given list."
+    title_in: [String!]
+    "All values that are not equal to given value."
+    title_not: String
+    "All values not containing the given string."
+    title_not_contains: String
+    "All values not ending with the given string"
+    title_not_ends_with: String
+    "All values that are not contained in given list."
+    title_not_in: [String!]
+    "All values not starting with the given string."
+    title_not_starts_with: String
+    "All values starting with the given string."
+    title_starts_with: String
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+    url: String
+    "All values containing the given string."
+    url_contains: String
+    "All values ending with the given string."
+    url_ends_with: String
+    "All values that are contained in given list."
+    url_in: [String!]
+    "All values that are not equal to given value."
+    url_not: String
+    "All values not containing the given string."
+    url_not_contains: String
+    "All values not ending with the given string"
+    url_not_ends_with: String
+    "All values that are not contained in given list."
+    url_not_in: [String!]
+    "All values not starting with the given string."
+    url_not_starts_with: String
+    "All values starting with the given string."
+    url_starts_with: String
+    works_every: WorkWhereInput
+    works_none: WorkWhereInput
+    works_some: WorkWhereInput
+}
+
+"References Repository record uniquely"
+input RepositoryWhereUniqueInput {
+    id: ID
+}
+
+input UnpublishLocaleInput {
+    "Locales to unpublish"
+    locale: Locale!
+    "Stages to unpublish selected locales from"
+    stages: [Stage!]!
+}
+
+input VersionWhereInput {
+    id: ID!
+    revision: Int!
+    stage: Stage!
+}
+
+input WorkConnectInput {
+    "Allow to specify document position in list of connected documents, will default to appending at end of list"
+    position: ConnectPositionInput
+    "Document to connect"
+    where: WorkWhereUniqueInput!
+}
+
+input WorkCreateInput {
+    categories: [WorkCategory!]
+    createdAt: DateTime
+    hero: AssetCreateOneInlineInput!
+    "Inline mutations for managing document localizations excluding the default locale"
+    localizations: WorkCreateLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]!
+    repositories: RepositoryCreateManyInlineInput
+    slug: String!
+    "summary input for default locale (en)"
+    summary: String!
+    "title input for default locale (en)"
+    title: String!
+    updatedAt: DateTime
+}
+
+input WorkCreateLocalizationDataInput {
+    createdAt: DateTime
+    markdown: [String!]!
+    summary: String!
+    title: String!
+    updatedAt: DateTime
+}
+
+input WorkCreateLocalizationInput {
+    "Localization input"
+    data: WorkCreateLocalizationDataInput!
+    locale: Locale!
+}
+
+input WorkCreateLocalizationsInput {
+    "Create localizations for the newly-created document"
+    create: [WorkCreateLocalizationInput!]
+}
+
+input WorkCreateManyInlineInput {
+    "Connect multiple existing Work documents"
+    connect: [WorkWhereUniqueInput!]
+    "Create and connect multiple existing Work documents"
+    create: [WorkCreateInput!]
+}
+
+input WorkCreateOneInlineInput {
+    "Connect one existing Work document"
+    connect: WorkWhereUniqueInput
+    "Create and connect one Work document"
+    create: WorkCreateInput
+}
+
+"Identifies documents"
+input WorkManyWhereInput {
+    "Logical AND on all given filters."
+    AND: [WorkWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [WorkWhereInput!]
+    "Logical OR on all given filters."
+    OR: [WorkWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    "Matches if the field array contains *all* items provided to the filter and order does match"
+    categories: [WorkCategory!]
+    "Matches if the field array contains *all* items provided to the filter"
+    categories_contains_all: [WorkCategory!]
+    "Matches if the field array does not contain any of the items provided to the filter"
+    categories_contains_none: [WorkCategory!]
+    "Matches if the field array contains at least one item provided to the filter"
+    categories_contains_some: [WorkCategory!]
+    "Matches if the field array does not contains *all* items provided to the filter or order does not match"
+    categories_not: [WorkCategory!]
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    hero: AssetWhereInput
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    repositories_every: RepositoryWhereInput
+    repositories_none: RepositoryWhereInput
+    repositories_some: RepositoryWhereInput
+    slug: String
+    "All values containing the given string."
+    slug_contains: String
+    "All values ending with the given string."
+    slug_ends_with: String
+    "All values that are contained in given list."
+    slug_in: [String!]
+    "All values that are not equal to given value."
+    slug_not: String
+    "All values not containing the given string."
+    slug_not_contains: String
+    "All values not ending with the given string"
+    slug_not_ends_with: String
+    "All values that are not contained in given list."
+    slug_not_in: [String!]
+    "All values not starting with the given string."
+    slug_not_starts_with: String
+    "All values starting with the given string."
+    slug_starts_with: String
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+}
+
+input WorkUpdateInput {
+    categories: [WorkCategory!]
+    hero: AssetUpdateOneInlineInput
+    "Manage document localizations"
+    localizations: WorkUpdateLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+    repositories: RepositoryUpdateManyInlineInput
+    slug: String
+    "summary input for default locale (en)"
+    summary: String
+    "title input for default locale (en)"
+    title: String
+}
+
+input WorkUpdateLocalizationDataInput {
+    markdown: [String!]
+    summary: String
+    title: String
+}
+
+input WorkUpdateLocalizationInput {
+    data: WorkUpdateLocalizationDataInput!
+    locale: Locale!
+}
+
+input WorkUpdateLocalizationsInput {
+    "Localizations to create"
+    create: [WorkCreateLocalizationInput!]
+    "Localizations to delete"
+    delete: [Locale!]
+    "Localizations to update"
+    update: [WorkUpdateLocalizationInput!]
+    upsert: [WorkUpsertLocalizationInput!]
+}
+
+input WorkUpdateManyInlineInput {
+    "Connect multiple existing Work documents"
+    connect: [WorkConnectInput!]
+    "Create and connect multiple Work documents"
+    create: [WorkCreateInput!]
+    "Delete multiple Work documents"
+    delete: [WorkWhereUniqueInput!]
+    "Disconnect multiple Work documents"
+    disconnect: [WorkWhereUniqueInput!]
+    "Override currently-connected documents with multiple existing Work documents"
+    set: [WorkWhereUniqueInput!]
+    "Update multiple Work documents"
+    update: [WorkUpdateWithNestedWhereUniqueInput!]
+    "Upsert multiple Work documents"
+    upsert: [WorkUpsertWithNestedWhereUniqueInput!]
+}
+
+input WorkUpdateManyInput {
+    categories: [WorkCategory!]
+    "Optional updates to localizations"
+    localizations: WorkUpdateManyLocalizationsInput
+    "markdown input for default locale (en)"
+    markdown: [String!]
+    "summary input for default locale (en)"
+    summary: String
+    "title input for default locale (en)"
+    title: String
+}
+
+input WorkUpdateManyLocalizationDataInput {
+    markdown: [String!]
+    summary: String
+    title: String
+}
+
+input WorkUpdateManyLocalizationInput {
+    data: WorkUpdateManyLocalizationDataInput!
+    locale: Locale!
+}
+
+input WorkUpdateManyLocalizationsInput {
+    "Localizations to update"
+    update: [WorkUpdateManyLocalizationInput!]
+}
+
+input WorkUpdateManyWithNestedWhereInput {
+    "Update many input"
+    data: WorkUpdateManyInput!
+    "Document search"
+    where: WorkWhereInput!
+}
+
+input WorkUpdateOneInlineInput {
+    "Connect existing Work document"
+    connect: WorkWhereUniqueInput
+    "Create and connect one Work document"
+    create: WorkCreateInput
+    "Delete currently connected Work document"
+    delete: Boolean
+    "Disconnect currently connected Work document"
+    disconnect: Boolean
+    "Update single Work document"
+    update: WorkUpdateWithNestedWhereUniqueInput
+    "Upsert single Work document"
+    upsert: WorkUpsertWithNestedWhereUniqueInput
+}
+
+input WorkUpdateWithNestedWhereUniqueInput {
+    "Document to update"
+    data: WorkUpdateInput!
+    "Unique document search"
+    where: WorkWhereUniqueInput!
+}
+
+input WorkUpsertInput {
+    "Create document if it didn't exist"
+    create: WorkCreateInput!
+    "Update document if it exists"
+    update: WorkUpdateInput!
+}
+
+input WorkUpsertLocalizationInput {
+    create: WorkCreateLocalizationDataInput!
+    locale: Locale!
+    update: WorkUpdateLocalizationDataInput!
+}
+
+input WorkUpsertWithNestedWhereUniqueInput {
+    "Upsert data"
+    data: WorkUpsertInput!
+    "Unique document search"
+    where: WorkWhereUniqueInput!
+}
+
+"Identifies documents"
+input WorkWhereInput {
+    "Logical AND on all given filters."
+    AND: [WorkWhereInput!]
+    "Logical NOT on all given filters combined by AND."
+    NOT: [WorkWhereInput!]
+    "Logical OR on all given filters."
+    OR: [WorkWhereInput!]
+    "Contains search across all appropriate fields."
+    _search: String
+    "Matches if the field array contains *all* items provided to the filter and order does match"
+    categories: [WorkCategory!]
+    "Matches if the field array contains *all* items provided to the filter"
+    categories_contains_all: [WorkCategory!]
+    "Matches if the field array does not contain any of the items provided to the filter"
+    categories_contains_none: [WorkCategory!]
+    "Matches if the field array contains at least one item provided to the filter"
+    categories_contains_some: [WorkCategory!]
+    "Matches if the field array does not contains *all* items provided to the filter or order does not match"
+    categories_not: [WorkCategory!]
+    createdAt: DateTime
+    "All values greater than the given value."
+    createdAt_gt: DateTime
+    "All values greater than or equal the given value."
+    createdAt_gte: DateTime
+    "All values that are contained in given list."
+    createdAt_in: [DateTime!]
+    "All values less than the given value."
+    createdAt_lt: DateTime
+    "All values less than or equal the given value."
+    createdAt_lte: DateTime
+    "All values that are not equal to given value."
+    createdAt_not: DateTime
+    "All values that are not contained in given list."
+    createdAt_not_in: [DateTime!]
+    hero: AssetWhereInput
+    id: ID
+    "All values containing the given string."
+    id_contains: ID
+    "All values ending with the given string."
+    id_ends_with: ID
+    "All values that are contained in given list."
+    id_in: [ID!]
+    "All values that are not equal to given value."
+    id_not: ID
+    "All values not containing the given string."
+    id_not_contains: ID
+    "All values not ending with the given string"
+    id_not_ends_with: ID
+    "All values that are not contained in given list."
+    id_not_in: [ID!]
+    "All values not starting with the given string."
+    id_not_starts_with: ID
+    "All values starting with the given string."
+    id_starts_with: ID
+    "Matches if the field array contains *all* items provided to the filter and order does match"
+    markdown: [String!]
+    "Matches if the field array contains *all* items provided to the filter"
+    markdown_contains_all: [String!]
+    "Matches if the field array does not contain any of the items provided to the filter"
+    markdown_contains_none: [String!]
+    "Matches if the field array contains at least one item provided to the filter"
+    markdown_contains_some: [String!]
+    "Matches if the field array does not contains *all* items provided to the filter or order does not match"
+    markdown_not: [String!]
+    publishedAt: DateTime
+    "All values greater than the given value."
+    publishedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    publishedAt_gte: DateTime
+    "All values that are contained in given list."
+    publishedAt_in: [DateTime!]
+    "All values less than the given value."
+    publishedAt_lt: DateTime
+    "All values less than or equal the given value."
+    publishedAt_lte: DateTime
+    "All values that are not equal to given value."
+    publishedAt_not: DateTime
+    "All values that are not contained in given list."
+    publishedAt_not_in: [DateTime!]
+    repositories_every: RepositoryWhereInput
+    repositories_none: RepositoryWhereInput
+    repositories_some: RepositoryWhereInput
+    slug: String
+    "All values containing the given string."
+    slug_contains: String
+    "All values ending with the given string."
+    slug_ends_with: String
+    "All values that are contained in given list."
+    slug_in: [String!]
+    "All values that are not equal to given value."
+    slug_not: String
+    "All values not containing the given string."
+    slug_not_contains: String
+    "All values not ending with the given string"
+    slug_not_ends_with: String
+    "All values that are not contained in given list."
+    slug_not_in: [String!]
+    "All values not starting with the given string."
+    slug_not_starts_with: String
+    "All values starting with the given string."
+    slug_starts_with: String
+    summary: String
+    "All values containing the given string."
+    summary_contains: String
+    "All values ending with the given string."
+    summary_ends_with: String
+    "All values that are contained in given list."
+    summary_in: [String!]
+    "All values that are not equal to given value."
+    summary_not: String
+    "All values not containing the given string."
+    summary_not_contains: String
+    "All values not ending with the given string"
+    summary_not_ends_with: String
+    "All values that are not contained in given list."
+    summary_not_in: [String!]
+    "All values not starting with the given string."
+    summary_not_starts_with: String
+    "All values starting with the given string."
+    summary_starts_with: String
+    title: String
+    "All values containing the given string."
+    title_contains: String
+    "All values ending with the given string."
+    title_ends_with: String
+    "All values that are contained in given list."
+    title_in: [String!]
+    "All values that are not equal to given value."
+    title_not: String
+    "All values not containing the given string."
+    title_not_contains: String
+    "All values not ending with the given string"
+    title_not_ends_with: String
+    "All values that are not contained in given list."
+    title_not_in: [String!]
+    "All values not starting with the given string."
+    title_not_starts_with: String
+    "All values starting with the given string."
+    title_starts_with: String
+    updatedAt: DateTime
+    "All values greater than the given value."
+    updatedAt_gt: DateTime
+    "All values greater than or equal the given value."
+    updatedAt_gte: DateTime
+    "All values that are contained in given list."
+    updatedAt_in: [DateTime!]
+    "All values less than the given value."
+    updatedAt_lt: DateTime
+    "All values less than or equal the given value."
+    updatedAt_lte: DateTime
+    "All values that are not equal to given value."
+    updatedAt_not: DateTime
+    "All values that are not contained in given list."
+    updatedAt_not_in: [DateTime!]
+}
+
+"References Work record uniquely"
+input WorkWhereUniqueInput {
+    id: ID
+    slug: String
+}
+
+
+"A date string, such as 2007-12-03 (YYYY-MM-DD), compliant with ISO 8601 standard for representation of dates using the Gregorian calendar."
+scalar Date
+
+"A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the date-timeformat outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representationof dates and times using the Gregorian calendar."
+scalar DateTime
+
+scalar Hex
+
+"Raw JSON value"
+scalar Json
+
+"The Long scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar Long
+
+scalar RGBAHue
+
+scalar RGBATransparency
+
+"Slate-compatible RichText AST"
+scalar RichTextAST

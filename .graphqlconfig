@@ -1,0 +1,15 @@
+{
+  "name": "GraphCMS",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://api-us-east-1.graphcms.com/v2/ck88yjl9x01o801z91nyy7j2u/master",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
