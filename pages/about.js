@@ -31,7 +31,7 @@ Drop by and say hi on [Twitter](https://twitter.com/jermashley)!`
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const { items } = await axios
     .get(`${process.env.BASE_URL}/api/topTracks`)
     .then((res) => res.data)
