@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {process.env.GOOGLE_TAG ?? (
+        {process.env.GOOGLE_TAG && (
           <>
             <script
               async
