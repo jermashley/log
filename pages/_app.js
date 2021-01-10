@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {typeof process.env.GOOGLE_TAG !== `undefined` ?? (
+        {process.env.GOOGLE_TAG ?? (
           <>
             <script
               async
