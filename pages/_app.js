@@ -9,10 +9,11 @@ const queryClient = new QueryClient()
 persistWithLocalStorage(queryClient)
 
 function MyApp({ Component, pageProps }) {
+  console.log(process.env.NODE_ENV)
   return (
     <>
       <Head>
-        {process.env.GOOGLE_TAG && (
+        {process.env.GOOGLE_TAG ?? (
           <>
             <script
               async
