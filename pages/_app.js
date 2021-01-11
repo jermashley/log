@@ -9,15 +9,15 @@ const queryClient = new QueryClient()
 persistWithLocalStorage(queryClient)
 
 function MyApp({ Component, pageProps }) {
-  console.log(process.env.NODE_ENV)
+  console.log(process.env.NEXT_PUBLIC_GOOGLE_TAG)
   return (
     <>
       <Head>
-        {process.env.GOOGLE_TAG ?? (
+        {process.env.NEXT_PUBLIC_GOOGLE_TAG && (
           <>
             <script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_TAG}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_TAG}`}
             />
             <script
               dangerouslySetInnerHTML={{
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
                 function gtag(){dataLayer.push(arguments)}
                 gtag('js', new Date())
       
-                gtag('config', '${process.env.GOOGLE_TAG}')`,
+                gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_TAG}')`,
               }}
             />
           </>
