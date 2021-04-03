@@ -37,20 +37,20 @@ const Work = ({ work }) => {
       />
 
       <section>
-        <h1 className="text-4xl text-coolGray-700 dark:text-coolGray-400 font-normal mb-3">
+        <h1 className="mb-3 text-4xl font-normal text-coolGray-700 dark:text-coolGray-400">
           {work.title}
         </h1>
 
         <DateString
-          className="block font-semibold text-coolGray-500 text-2xs uppercase mb-4"
+          className="block mb-4 font-semibold uppercase text-coolGray-500 text-2xs"
           timeStamp={work.publishedAt}
           dateFormat="MMMM dd, yyyy"
         />
 
-        <div className="grid grid-flow-col auto-cols-min gap-2 mb-12">
+        <div className="grid grid-flow-col gap-2 mb-12 auto-cols-min">
           {work.categories.map((category) => (
             <span
-              className="block px-2 py-1 rounded bg-coolGray-200 dark:bg-coolGray-800 text-coolGray-500 dark:text-coolGray-400 text-2xs font-medium whitespace-nowrap leading-snug"
+              className="block px-2 py-1 font-medium leading-snug rounded bg-coolGray-200 dark:bg-coolGray-800 text-coolGray-500 dark:text-coolGray-400 text-2xs whitespace-nowrap"
               key={`${work.id}-${category}`}
             >
               {snakeToTitleCase(category)}
@@ -68,18 +68,18 @@ const Work = ({ work }) => {
           <section className="grid grid-flow-col gap-4 mb-12 w-min">
             {work.repositories.map((repository) => (
               <dl
-                className="flex flex-row justify-start items-stretch w-min"
+                className="flex flex-row items-stretch justify-start w-min"
                 key={repository.id}
               >
-                <dt className="bg-coolGray-200 dark:bg-coolGray-800 text-coolGray-500 dark:text-coolGray-400 rounded-bl rounded-tl px-3 py-1 text-sm">
+                <dt className="px-3 py-1 text-sm rounded-tl rounded-bl bg-coolGray-200 dark:bg-coolGray-800 text-coolGray-500 dark:text-coolGray-400">
                   <FontAwesomeIcon icon={icon(repository.repositoryHost)} />
                 </dt>
 
-                <dd className="transition-colors duration-500 bg-coolGray-100 dark:bg-coolGray-1000 text-coolGray-600 dark:text-coolGray-300 hover:text-pink-500 rounded-br rounded-tr px-3 flex flex-col justify-center items-center text-2xs font-medium whitespace-nowrap leading-snug">
+                <dd className="flex flex-col items-center justify-center px-3 font-medium leading-snug transition-colors duration-500 rounded-tr rounded-br bg-coolGray-100 dark:bg-coolGray-1000 text-coolGray-600 dark:text-coolGray-300 hover:text-pink-500 text-2xs whitespace-nowrap">
                   <a href={repository.url} target="_blank" rel="noreferrer">
                     {repository.title}
                     <FontAwesomeIcon
-                      className="align-middle ml-2"
+                      className="ml-2 align-middle"
                       icon={faExternalLinkSquare}
                     />
                   </a>

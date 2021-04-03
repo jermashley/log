@@ -10,7 +10,7 @@ const Works = ({ works }) => {
         description="Howdy! I'm Jeremiah and I design and develop websites and webapps. Here are some of my favorite projects — from web work to photo and video to print design."
       />
 
-      <section className="w-full grid grid-cols-1 grid-flow-row gap-6">
+      <section className="grid w-full grid-flow-row grid-cols-1 gap-6">
         {works.map((work) => (
           <WorkCard work={work} key={work.id} />
         ))}

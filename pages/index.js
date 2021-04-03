@@ -21,30 +21,24 @@ const Home = () => {
         imageUrl="https://media.graphcms.com/8F3BtEKMSaedw4kCLl17"
       />
 
-      <section
-        className="flex-grow flex flex-col justify-center items-start"
-        style={{
-          minHeight: `65vh`,
-          height: `100%`,
-        }}
-      >
-        <h1 className="text-6xl text-coolGray-700 dark:text-coolGray-200 font-light leading-loose">
+      <section className="flex-grow flex flex-col justify-center items-start min-h-[65vh] h-full">
+        <h1 className="text-6xl font-light leading-loose text-coolGray-700 dark:text-coolGray-200">
           Howdy
         </h1>
 
-        <p className="font-medium text-2xl text-coolGray-700 dark:text-coolGray-200 leading-relaxed mt-4 mb-6 w-4/5">
+        <p className="w-4/5 mt-4 mb-6 text-2xl font-medium leading-relaxed text-coolGray-700 dark:text-coolGray-200">
           Welcome to my space! My name is Jeremiah and I&apos;m a{` `}
           <span className="text-pink-500">developer</span> and{` `}
           <span className="text-pink-500">designer</span>.
         </p>
 
-        <div className="grid gap-2 grid-flow-col">
+        <div className="grid grid-flow-col gap-2">
           <a
             href={TWITTER_PROFILE_URL}
             aria-label="Twitter"
             target="_blank"
             rel="noreferrer"
-            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
+            className="flex flex-row items-center justify-center p-2 text-xl transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800 text-coolGray-600 dark:text-coolGray-200 "
           >
             <FontAwesomeIcon icon={faTwitter} fixedWidth />
           </a>
@@ -54,7 +48,7 @@ const Home = () => {
             aria-label="Gitlab"
             target="_blank"
             rel="noreferrer"
-            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
+            className="flex flex-row items-center justify-center p-2 text-xl transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800 text-coolGray-600 dark:text-coolGray-200 "
           >
             <FontAwesomeIcon icon={faGitlab} fixedWidth />
           </a>
@@ -64,7 +58,7 @@ const Home = () => {
             aria-label="LinkedIn"
             target="_blank"
             rel="noreferrer"
-            className="transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800 text-xl text-coolGray-600 dark:text-coolGray-200 "
+            className="flex flex-row items-center justify-center p-2 text-xl transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800 text-coolGray-600 dark:text-coolGray-200 "
           >
             <FontAwesomeIcon icon={faLinkedin} fixedWidth />
           </a>

@@ -21,7 +21,7 @@ const FotoLogs = ({ fotoLogs }) => {
             <Link href={`fotolog/${fotoLog.id}`} key={fotoLog.id}>
               <a>
                 {hasMultiplePhotos && (
-                  <span className="text-white text-sm">
+                  <span className="text-sm text-white">
                     <FontAwesomeIcon icon={faClone} fixedWidth />
                   </span>
                 )}
