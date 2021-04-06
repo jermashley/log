@@ -8,7 +8,7 @@ const WorkCard = ({ work }) => {
   return (
     <Link href={`${WORK_BASE_PATH}/${work.slug}`} key={work.id}>
       <a>
-        <div className="grid w-full grid-cols-[auto,1fr] h-auto grid-cols-1 grid-rows-2 overflow-hidden transition-all duration-500 scale-100 rounded-md shadow-none group bg-coolGray-100 dark:bg-coolGray-1000 hover:shadow-2xl transform-gpu hover:scale-105">
+        <div className="grid w-full grid-rows-[auto,1fr] h-auto grid-cols-1 overflow-hidden transition-all duration-500 scale-100 rounded-md shadow-none group bg-coolGray-100 dark:bg-coolGray-1000 hover:shadow-2xl transform-gpu hover:scale-105">
           <div className="w-full h-auto">
             <Image width={672} height={352} src={work.hero.url} alt="" />
           </div>

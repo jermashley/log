@@ -4,11 +4,11 @@ const typography = require(`@tailwindcss/typography`)
 module.exports = {
   purge: {
     content: [
-      `./pages/*.js`,
-      `./pages/**/*.js`,
-      `./components/*.js`,
-      `./components/**/*.js`,
-      `./layouts/*.js`,
+      `./pages/*.jsx`,
+      `./pages/**/*.jsx`,
+      `./components/*.jsx`,
+      `./components/**/*.jsx`,
+      `./layouts/*.jsx`,
     ],
   },
   darkMode: `media`,

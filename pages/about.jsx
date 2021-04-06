@@ -5,11 +5,11 @@ import axios from 'axios'
 
 const About = ({ tracks }) => {
   const markdownBlock = `I currently work at [Prologue Technology](https://prologuetechnology.com) as a Software Support Engineer, front-end developer, and designer.  The past 15 years have given me the opportunity to work in a variety of environments ranging from live television production to web application development to photo and video production.  My current forte is web design and development.
-  
-I work mainly in the front-end, using [Vue.js](https://vuejs.org) or [React](https://reactjs.org) to build elegant, performant, and functional user interfaces. Recently, I have delved into learning [Next.js](https://nextjs.org) (used for this site!). For the backend, I have focused primary on the [Laravel](https://laravel.com) PHP framework.
+
+I work mainly in the front-end, using [Vue.js](https://vuejs.org) or [React](https://reactjs.org) to build elegant, performant, and functional user interfaces. Recently, I have delved into learning [Next.js](https://nextjs.org). For the backend, I have focused primary on the [Laravel](https://laravel.com) PHP framework.
 
 For video production, I have spent most of my career working with the industry-standard Adobe Suite; however, I am well-versed in other NLEs like DaVinci Resolve.  After Effects and The Foundry's Nuke are my go-tos for digital effects, compositing, and chroma keying.  While not proficient at making much more than cubes and donuts in 3D programs like MAXON's Cinema4D or Autodesk's Maya, I do find myself more at home lighting, texturing, and rendering 3D scenes.
-  
+
 Drop by and say hi on [Twitter](https://twitter.com/jermashley)!`
 
   return (
@@ -20,7 +20,7 @@ Drop by and say hi on [Twitter](https://twitter.com/jermashley)!`
         imageUrl="https://media.graphcms.com/8F3BtEKMSaedw4kCLl17"
       />
 
-      <article className="prose dark:prose-dark max-w-none mb-12">
+      <article className="mb-12 prose dark:prose-dark max-w-none">
         <ReactMarkdown source={markdownBlock} />
       </article>
 
