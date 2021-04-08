@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 const SpotifyTrackGrid = ({ track }) => {
   return (
-    <div className="grid grid-rows-2 gap-x-3 gap-y-1 grid-cols-[4rem,1fr]">
+    <div className="grid grid-rows-2 gap-x-3 gap-y-0 grid-cols-[4rem,1fr]">
       <div className="col-start-1 row-span-2 row-start-1">
         <Image
           src={track.album.images[1].url}

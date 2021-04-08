@@ -46,13 +46,13 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
 
   return (
     <header
+      className="fixed z-50 w-full px-4 bg-white bg-opacity-75 dark:bg-opacity-75 dark:bg-coolGray-900 md:px-0"
       style={{
-        backdropFilter: `blur(10px)`,
-        WebkitBackdropFilter: `blur(10px)`,
+        WebkitBackdropFilter: `blur(16px)`,
+        backdropFilter: `blur(16px)`,
       }}
-      className="bg-white dark:bg-coolGray-900 bg-opacity-75 fixed w-full z-50 px-4 md:px-0"
     >
-      <nav className="flex flex-row justify-between items-center py-4 max-w-2xl mx-auto">
+      <nav className="flex flex-row items-center justify-between max-w-2xl py-4 mx-auto">
         <div className="text-coolGray-700 dark:text-coolGray-400">
           <Link href="/">
             <a
@@ -63,11 +63,7 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
               }`}
               aria-label="Home"
             >
-              {isHomePage ? (
-                heading
-              ) : (
-                <FontAwesomeIcon icon={homeIcon} fixedWidth />
-              )}
+              {isHomePage ? `` : <FontAwesomeIcon icon={homeIcon} fixedWidth />}
             </a>
           </Link>
 
@@ -84,7 +80,7 @@ export default function Navbar({ heading = `Jeremiah Ashley` }) {
                 </Link>
               ) : (
                 <>
-                  <span className="font-medium ml-2 text-coolGray-700 dark:text-coolGray-400">
+                  <span className="ml-2 font-medium text-coolGray-700 dark:text-coolGray-400">
                     {breadcrumb}
                   </span>
                 </>

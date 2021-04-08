@@ -1,34 +1,30 @@
-import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignalStream } from '@fortawesome/pro-light-svg-icons'
-import { useQuery } from 'react-query'
 import SpotifyTrackGrid from '@components/Spotify/SpotifyTrackGrid'
 
-const SpotifyNowPlaying = () => {
-  const { isLoading, error, data, isFetching } = useQuery(`getNowPlaying`, () =>
-    axios.get(`/api/nowPlaying`).then((res) => res.data),
-  )
+const SpotifyNowPlaying = ({ spotifyData }) => {
+  const { isLoading, error, data } = spotifyData
 
   return (
     <section>
-      <div className="grid grid-flow-col auto-cols-min gap-4 items-center mb-8">
+      <div className="grid items-center grid-flow-col gap-2 mb-4 auto-cols-min min-w-[24rem]">
         <FontAwesomeIcon
-          className="text-3xl text-coolGray-500 dark:text-coolGray-400"
+          className="text-xl text-coolGray-500 dark:text-coolGray-400"
           icon={faSignalStream}
           fixedWidth
         />
 
-        <p className="font-normal text-xl text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap uppercase">
+        <p className="text-sm font-semibold uppercase text-coolGray-600 dark:text-coolGray-400 whitespace-nowrap">
           Now Playing
         </p>
       </div>
 
-      {!error && !isLoading && !isFetching && data.isPlaying ? (
+      {!error && !isLoading && data.isPlaying ? (
         <SpotifyTrackGrid track={data.item} />
       ) : (
-        <h1 className="font-medium text-xl text-coolGray-400 dark:text-coolGray-400 leading-relaxed opacity-75">
-          Nothing playing yet!
-        </h1>
+        <p className="text-base font-normal leading-relaxed opacity-75 text-coolGray-400 dark:text-coolGray-400">
+          Nothing playing at the moment...
+        </p>
       )}
     </section>
   )

@@ -7,12 +7,14 @@ import {
   faPencilRuler as lightPencilRuler,
   faCameraAlt as lightCameraAlt,
   faUser as lightUser,
+  faHeadphonesAlt as lightHeadphones,
 } from '@fortawesome/pro-light-svg-icons'
 import {
   faFeather as duotoneFeather,
   faPencilRuler as duotonePencilRuler,
   faCameraAlt as duotoneCameraAlt,
   faUser as duotoneUser,
+  faHeadphonesAlt as duotoneHeadphones,
 } from '@fortawesome/pro-duotone-svg-icons'
 import {
   BLOG_BASE_PATH,
@@ -20,6 +22,7 @@ import {
   PHOTOGRAPHY_BASE_PATH,
   ABOUT_BASE_PATH,
 } from '@lib/constants/navigation'
+import NowPlaying from '../Spotify/NowPlaying'
 
 const NavbarIcons = () => {
   const { pathname } = useRouter()
@@ -41,10 +44,12 @@ const NavbarIcons = () => {
 
   return (
     <div className="grid grid-flow-col gap-2">
+      <NowPlaying />
+
       <Link href={BLOG_BASE_PATH}>
         <a
           aria-label="Blog"
-          className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+          className="flex flex-row items-center justify-center p-2 text-lg transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800"
         >
           <FontAwesomeIcon
             icon={isActivePath(BLOG_BASE_PATH) ? duotoneFeather : lightFeather}
@@ -57,7 +62,7 @@ const NavbarIcons = () => {
       <Link href={WORK_BASE_PATH}>
         <a
           aria-label="Portfolio"
-          className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+          className="flex flex-row items-center justify-center p-2 text-lg transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800"
         >
           <FontAwesomeIcon
             icon={
@@ -74,7 +79,7 @@ const NavbarIcons = () => {
       <Link href={PHOTOGRAPHY_BASE_PATH}>
         <a
           aria-label="Photography"
-          className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+          className="flex flex-row items-center justify-center p-2 text-lg transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800"
         >
           <FontAwesomeIcon
             icon={
@@ -91,7 +96,7 @@ const NavbarIcons = () => {
       <Link href={ABOUT_BASE_PATH}>
         <a
           aria-label="About me"
-          className="text-lg transition-colors duration-300 flex flex-row justify-center items-center p-2 rounded bg-transparent hover:bg-coolGray-100 dark:hover:bg-coolGray-800 border border-transparent hover:border-coolGray-100 dark:hover:border-coolGray-800"
+          className="flex flex-row items-center justify-center p-2 text-lg transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800"
         >
           <FontAwesomeIcon
             icon={isActivePath(ABOUT_BASE_PATH) ? duotoneUser : lightUser}

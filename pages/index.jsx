@@ -10,7 +10,6 @@ import {
   faTwitter,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
-import SpotifyNowPlaying from '@components/Spotify/SpotifyNowPlaying'
 
 const Home = () => {
   return (
@@ -65,7 +64,7 @@ const Home = () => {
         </div>
       </section>
 
-      <SpotifyNowPlaying />
+      {/* <SpotifyNowPlaying /> */}
     </>
   )
 }
