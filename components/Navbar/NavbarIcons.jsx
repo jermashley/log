@@ -46,18 +46,18 @@ const NavbarIcons = () => {
     <div className="grid grid-flow-col gap-2">
       <NowPlaying />
 
-      <Link href={BLOG_BASE_PATH}>
-        <a
-          aria-label="Blog"
-          className="flex flex-row items-center justify-center p-2 text-lg transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800"
-        >
-          <FontAwesomeIcon
-            icon={isActivePath(BLOG_BASE_PATH) ? duotoneFeather : lightFeather}
-            className={setIconAccent(BLOG_BASE_PATH)}
-            fixedWidth
-          />
-        </a>
-      </Link>
+      {/*<Link href={BLOG_BASE_PATH}>*/}
+      {/*  <a*/}
+      {/*    aria-label="Blog"*/}
+      {/*    className="flex flex-row items-center justify-center p-2 text-lg transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800"*/}
+      {/*  >*/}
+      {/*    <FontAwesomeIcon*/}
+      {/*      icon={isActivePath(BLOG_BASE_PATH) ? duotoneFeather : lightFeather}*/}
+      {/*      className={setIconAccent(BLOG_BASE_PATH)}*/}
+      {/*      fixedWidth*/}
+      {/*    />*/}
+      {/*  </a>*/}
+      {/*</Link>*/}
 
       <Link href={WORK_BASE_PATH}>
         <a
