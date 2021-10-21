@@ -4,7 +4,7 @@ import SpotifyTopTracks from '@components/Spotify/SpotifyTop'
 import axios from 'axios'
 
 const About = ({ tracks }) => {
-  const markdownBlock = `I currently work at [Prologue Technology](https://prologuetechnology.com) as Manager of QA / Support / DevOps, front-end developer, and designer.  The past 15 years have given me the opportunity to work in a variety of environments ranging from live television production to web application development to photo and video production.  My current forte is web design and development.
+  const markdownBlock = `I currently work at [Interior Define](https://interiordefine.com) as a front-end developer.  The past 15 years have given me the opportunity to work in a variety of environments ranging from live television production to web application development to photo and video production.  My current forte is web design and development.
 
 I work mainly in the front-end, using [Vue.js](https://vuejs.org) or [React](https://reactjs.org) to build elegant, performant, and functional user interfaces. Recently, I have delved into learning [Next.js](https://nextjs.org). For the backend, I have focused primary on the [Laravel](https://laravel.com) PHP framework.
 
