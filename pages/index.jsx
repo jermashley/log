@@ -1,12 +1,12 @@
 import HeadMeta from '@components/HeadMeta'
 import {
-  GITLAB_PROFILE_URL,
+  GITHUB_PROFILE_URL,
   LINKEDIN_PROFILE_URL,
   TWITTER_PROFILE_URL,
 } from '@lib/constants/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faGitlab,
+  faGithub,
   faTwitter,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons'
@@ -43,13 +43,13 @@ const Home = () => {
           </a>
 
           <a
-            href={GITLAB_PROFILE_URL}
-            aria-label="Gitlab"
+            href={GITHUB_PROFILE_URL}
+            aria-label="Github"
             target="_blank"
             rel="noreferrer"
             className="flex flex-row items-center justify-center p-2 text-xl transition-colors duration-300 bg-transparent border border-transparent rounded hover:bg-coolGray-100 dark:hover:bg-coolGray-800 hover:border-coolGray-100 dark:hover:border-coolGray-800 text-coolGray-600 dark:text-coolGray-200 "
           >
-            <FontAwesomeIcon icon={faGitlab} fixedWidth />
+            <FontAwesomeIcon icon={faGithub} fixedWidth />
           </a>
 
           <a
