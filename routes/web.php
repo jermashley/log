@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('home/Index');
+});
+
+Route::get('/musica', function () {
+    return Inertia::render('musica/Index');
 });
