@@ -1,11 +1,13 @@
 <script setup>
-import { ChevronDown } from 'lucide-vue-next'
+// import { ChevronDown } from 'lucide-vue-next'
 import { NavigationMenuTrigger, useForwardProps } from 'radix-vue'
 import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'
 
 import { navigationMenuTriggerStyle } from '.'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faAngleDown } from '@fortawesome/pro-regular-svg-icons'
 
 const props = defineProps({
   disabled: { type: Boolean, required: false },
@@ -29,9 +31,12 @@ const forwardedProps = useForwardProps(delegatedProps)
     :class="cn(navigationMenuTriggerStyle(), 'group', props.class)"
   >
     <slot />
-    <ChevronDown
+
+    <FontAwesomeIcon :icon="faAngleDown" fixed-width />
+
+    <!-- <ChevronDown
       class="relative top-px ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
       aria-hidden="true"
-    />
+    /> -->
   </NavigationMenuTrigger>
 </template>

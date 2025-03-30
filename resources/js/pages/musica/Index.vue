@@ -6,9 +6,7 @@ import DefaultLayout from '@/components/layout/DefaultLayout.vue'
 
 <template>
   <DefaultLayout>
-    <h1 class="mb-4 text-3xl font-bold">Musica</h1>
-
-    <section class="grid grid-cols-2 gap-4">
+    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <NowPlayingCard />
 
       <RecentlyPlayedCard />

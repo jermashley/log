@@ -1,7 +1,8 @@
 <script setup>
-import { cn } from '@/lib/utils';
 import { ToastAction } from 'reka-ui';
 import { computed } from 'vue';
+
+import { cn } from '@/lib/utils';
 
 const props = defineProps({
   altText: { type: String, required: true },

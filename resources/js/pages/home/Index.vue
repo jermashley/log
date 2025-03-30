@@ -1,13 +1,7 @@
 <script setup>
-//
+import DefaultLayout from '@/components/layout/DefaultLayout.vue'
 </script>
 
 <template>
-    <div>
-        <code v-if="nowPlaying">
-    <pre>
-        {{ JSON.stringify(nowPlaying, null, 2) }}
-    </pre>
-</code>
-    </div>
+  <DefaultLayout></DefaultLayout>
 </template>

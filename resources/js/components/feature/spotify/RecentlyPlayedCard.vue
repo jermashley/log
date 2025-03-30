@@ -10,6 +10,14 @@ import { useSpotifyRecentTracksQuery } from '@/composables/hooks/spotify'
 import TrackInfo from './TrackInfo.vue'
 import { Button } from '@/components/ui/button'
 import { faListMusic } from '@fortawesome/pro-duotone-svg-icons'
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 const { data, isLoading } = useSpotifyRecentTracksQuery()
 </script>
@@ -38,11 +46,39 @@ const { data, isLoading } = useSpotifyRecentTracksQuery()
     </CardContent>
 
     <CardFooter>
-      <Button variant="default" size="sm" class="w-full justify-center">
-        <FontAwesomeIcon class="mr-2 text-sm" :icon="faListMusic" fixed-width />
+      <Sheet>
+        <SheetTrigger as-child>
+          <Button variant="default" size="sm" class="w-full justify-center">
+            <FontAwesomeIcon
+              class="mr-2 text-sm"
+              :icon="faListMusic"
+              fixed-width
+            />
 
-        See more
-      </Button>
+            See more
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle> Recently Played </SheetTitle>
+          </SheetHeader>
+
+          <section class="h-full overflow-y-scroll py-8">
+            <div
+              v-if="data?.items?.length > 0"
+              class="grid h-auto grid-cols-1 gap-4"
+            >
+              <TrackInfo
+                v-for="(item, index) in data.items"
+                :key="index"
+                :track="item.track"
+                size="small"
+              />
+            </div>
+          </section>
+        </SheetContent>
+      </Sheet>
     </CardFooter>
   </Card>
 </template>

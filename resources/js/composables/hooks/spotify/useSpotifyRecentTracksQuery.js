@@ -15,23 +15,23 @@ const useSpotifyRecentTracksQuery = ({ config = {} } = {}) =>
     refetchOnWindowFocus: true,
     retry: false,
 
-    select: (data) => {
-      const newData = data.items.reduce((accumulator, current) => {
-        if (
-          accumulator.length === 0 ||
-          accumulator[accumulator.length - 1].track.id !== current.track.id
-        ) {
-          accumulator.push(current)
-        }
+    // select: (data) => {
+    //   const newData = data.items.reduce((accumulator, current) => {
+    //     if (
+    //       accumulator.length === 0 ||
+    //       accumulator[accumulator.length - 1].track.id !== current.track.id
+    //     ) {
+    //       accumulator.push(current)
+    //     }
 
-        return accumulator
-      }, [])
+    //     return accumulator
+    //   }, [])
 
-      return {
-        ...data,
-        items: newData,
-      }
-    },
+    //   return {
+    //     ...data,
+    //     items: newData,
+    //   }
+    // },
 
     ...config,
   })

@@ -1,5 +1,5 @@
 <script setup>
-import { ToastDescription } from 'reka-ui';
+import { DialogTitle } from 'reka-ui';
 import { computed } from 'vue';
 
 import { cn } from '@/lib/utils';
@@ -18,10 +18,10 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <ToastDescription
-    :class="cn('text-sm opacity-90', props.class)"
+  <DialogTitle
+    :class="cn('text-lg font-semibold text-foreground', props.class)"
     v-bind="delegatedProps"
   >
     <slot />
-  </ToastDescription>
+  </DialogTitle>
 </template>

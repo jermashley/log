@@ -7,24 +7,27 @@ import { faSpotify } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import TrackInfo from './TrackInfo.vue'
 
-const { data, isLoading } = useSpotifyNowPlayingQuery()
+const { data } = useSpotifyNowPlayingQuery()
 </script>
 
 <template>
   <Card
-    class="relative grid w-auto grid-cols-1 grid-rows-[auto,1fr,auto] overflow-hidden shadow-xl"
+    class="relative grid w-auto grid-cols-1 grid-rows-[auto,1fr,auto] overflow-hidden bg-transparent shadow-xl"
   >
     <CardHeader>
       <CardTitle class="text-lg">Now Playing</CardTitle>
     </CardHeader>
 
     <CardContent>
-      <div v-if="isLoading" class="text-gray-500">Loading...</div>
+      <div v-if="data">
+        <TrackInfo :track="data?.item" />
+      </div>
 
-      <TrackInfo :track="data.item" v-else-if="data" />
-
-      <div v-else class="text-gray-500">
-        😭 Nothing currently playing...for now.
+      <div
+        v-else
+        class="flex h-full flex-col items-center justify-center text-muted-foreground/75"
+      >
+        <p>😭 Nothing currently playing...for now.</p>
       </div>
     </CardContent>
 
@@ -44,10 +47,10 @@ const { data, isLoading } = useSpotifyNowPlayingQuery()
       </Button>
     </CardFooter>
 
-    <div v-if="data" class="pointer-events-none">
+    <div v-if="data?.item?.album?.images[0].url" class="pointer-events-none">
       <img
-        :src="data.item.album.images[0].url"
-        class="absolute bottom-0 left-0 right-0 top-0 h-full w-full object-cover opacity-10 blur-md"
+        :src="data.item.album?.images[0].url"
+        class="absolute bottom-0 left-0 right-0 top-0 -z-10 h-full w-full object-cover opacity-20 blur-xl"
       />
     </div>
   </Card>

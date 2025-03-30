@@ -14,6 +14,7 @@ const useSpotifyNowPlayingQuery = ({ config = {} } = {}) =>
     refetchInterval: 10000,
     refetchOnWindowFocus: true,
     retry: false,
+    select: (data) => (Object.keys(data).length === 0 ? null : data),
 
     ...config,
   })
